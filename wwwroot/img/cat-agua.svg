@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#E3F2FD"/>
+  <!-- Big water drop -->
+  <path d="M60 20 Q35 55 35 70 A25 25 0 0 0 85 70 Q85 55 60 20Z" fill="#0288D1"/>
+  <ellipse cx="50" cy="60" rx="7" ry="12" fill="#FFF" opacity="0.3" transform="rotate(-15 50 60)"/>
+  <!-- Waves below -->
+  <path d="M25 95 Q40 85 55 95 Q70 105 85 95" fill="none" stroke="#4FC3F7" stroke-width="2.5" opacity="0.5"/>
+  <path d="M30 103 Q45 93 60 103 Q75 113 90 103" fill="none" stroke="#4FC3F7" stroke-width="2" opacity="0.3"/>
+  <!-- Sparkle -->
+  <path d="M75 40 L77 35 L79 40 L84 42 L79 44 L77 49 L75 44 L70 42 Z" fill="#FFF" opacity="0.6"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <defs>
+    <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF8E1"/><stop offset="100%" style="stop-color:#FFECB3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" rx="16" fill="url(#cg1)"/>
+  <!-- Bottle -->
+  <rect x="160" y="55" width="80" height="95" rx="10" fill="#0288D1" opacity="0.8"/>
+  <rect x="180" y="35" width="40" height="25" rx="5" fill="#0277BD"/>
+  <rect x="185" y="30" width="30" height="10" rx="5" fill="#01579B"/>
+  <!-- Label on bottle -->
+  <rect x="170" y="80" width="60" height="30" rx="4" fill="white" opacity="0.8"/>
+  <text x="200" y="100" text-anchor="middle" font-family="Poppins,sans-serif" font-size="10" font-weight="700" fill="#0288D1">BIO</text>
+  <!-- Soap bubbles -->
+  <circle cx="120" cy="70" r="16" fill="white" opacity="0.4" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="105" cy="90" r="10" fill="white" opacity="0.3" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="135" cy="50" r="8" fill="white" opacity="0.3" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="280" cy="60" r="14" fill="white" opacity="0.35" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="300" cy="85" r="10" fill="white" opacity="0.25" stroke="#E0E0E0" stroke-width="1"/>
+  <circle cx="270" cy="95" r="8" fill="white" opacity="0.3" stroke="#E0E0E0" stroke-width="1"/>
+  <!-- Sparkle -->
+  <polygon points="310,40 313,48 321,48 315,53 317,61 310,56 303,61 305,53 299,48 307,48" fill="#FFD600" opacity="0.7"/>
+  <polygon points="90,130 92,136 98,136 93,140 95,146 90,142 85,146 87,140 82,136 88,136" fill="#FFD600" opacity="0.5"/>
+  <!-- Drops -->
+  <path d="M270 130 Q270 122 276 130 Q282 138 270 138 Q258 138 264 130 Z" fill="#29B6F6" opacity="0.5"/>
+  <path d="M130 140 Q130 134 134 140 Q138 146 130 146 Q122 146 126 140 Z" fill="#29B6F6" opacity="0.4"/>
+  <text x="200" y="185" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="600" fill="#E65100">Control de Grasas y Aceites</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <defs>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF3E0"/>
+      <stop offset="100%" style="stop-color:#FFE0B2"/>
+    </linearGradient>
+    <linearGradient id="g2b" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8F00"/>
+      <stop offset="100%" style="stop-color:#FFA726"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="20" fill="url(#g2)"/>
+  <!-- Grease trap box -->
+  <rect x="100" y="50" width="200" height="130" rx="10" fill="#455A64"/>
+  <rect x="110" y="60" width="180" height="110" rx="6" fill="#546E7A"/>
+  <!-- Grease layer -->
+  <rect x="110" y="60" width="180" height="35" rx="6 6 0 0" fill="#FFA726" opacity="0.7"/>
+  <ellipse cx="200" cy="95" rx="90" ry="5" fill="#FFB74D" opacity="0.5"/>
+  <!-- Water -->
+  <rect x="110" y="95" width="180" height="75" fill="#4FC3F7" opacity="0.4"/>
+  <!-- Inlet pipe -->
+  <rect x="50" y="75" width="60" height="14" rx="7" fill="#78909C"/>
+  <path d="M100 82 L110 82" stroke="#90A4AE" stroke-width="3"/>
+  <!-- Outlet pipe -->
+  <rect x="290" y="110" width="60" height="14" rx="7" fill="#78909C"/>
+  <path d="M290 117 L300 117" stroke="#90A4AE" stroke-width="3"/>
+  <!-- Sparkles -->
+  <g fill="url(#g2b)">
+    <polygon points="330,50 334,60 344,60 336,66 339,76 330,70 321,76 324,66 316,60 326,60" opacity="0.8"/>
+    <polygon points="70,140 73,147 80,147 74,151 76,158 70,154 64,158 66,151 60,147 67,147" opacity="0.6"/>
+  </g>
+  <!-- Brush icon -->
+  <g transform="translate(340,160)">
+    <rect x="-8" y="-30" width="16" height="35" rx="3" fill="#5D4037"/>
+    <rect x="-12" y="5" width="24" height="18" rx="4" fill="url(#g2b)"/>
+    <line x1="-6" y1="8" x2="-6" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="8" x2="0" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <line x1="6" y1="8" x2="6" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Flow arrows -->
+  <path d="M80 82 L95 82" stroke="#FFA726" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="200" y="215" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="600" fill="#E65100">Limpieza de Trampas de Grasa</text>
+</svg>

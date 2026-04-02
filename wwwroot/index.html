@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1B5E20">
+  <meta name="description" content="RISC Ingeniería S.A.S - Soluciones ambientales para sistemas sépticos, tratamiento de aguas residuales y manejo de subproductos.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>RISC Ingeniería S.A.S</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="/img/logoempresa.png">
+  <link rel="apple-touch-icon" href="/img/logoempresa.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Banner offline -->
+  <div id="offline-banner" class="offline-banner">📡 Sin conexión — Modo offline (guías disponibles)</div>
+
+  <!-- Notificación toast -->
+  <div id="notification-toast" class="notification-toast">
+    <span class="notif-icon">🔔</span>
+    <div class="notif-content">
+      <h4>Título</h4>
+      <p>Mensaje</p>
+    </div>
+    <button class="notif-close" onclick="dismissNotification()">✕</button>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PÁGINA: INICIO
+       ══════════════════════════════════ -->
+  <section id="page-home" class="page active">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <img src="/img/logoempresa.png" alt="RISC Ingeniería S.A.S" class="hero-logo">
+      <h1>RISC Ingeniería</h1>
+      <div class="subtitle">S.A.S</div>
+      <p>Soluciones ambientales para sistemas sépticos, tratamiento de aguas y manejo responsable de subproductos</p>
+      <div class="hero-wave">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120 Z" fill="var(--bg)"/></svg>
+      </div>
+    </div>
+
+    <!-- Sección de estadísticas -->
+    <div class="stats-bar">
+      <div class="stat-item"><span class="stat-number">100+</span><span class="stat-label">Clientes</span></div>
+      <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">Años</span></div>
+      <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Satisfacción</span></div>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <div class="quick-actions">
+      <button class="action-btn glass" onclick="navigate('services')">
+        <div class="action-icon-wrap services">🛠️</div>
+        <span class="action-label">Servicios</span>
+        <span class="action-desc">Mantenimiento profesional</span>
+      </button>
+      <button class="action-btn glass" onclick="navigate('products')">
+        <div class="action-icon-wrap products">🛒</div>
+        <span class="action-label">Productos</span>
+        <span class="action-desc">Soluciones especializadas</span>
+      </button>
+      <button class="action-btn glass" onclick="navigate('guides')">
+        <div class="action-icon-wrap guides">📚</div>
+        <span class="action-label">Guías</span>
+        <span class="action-desc">Aprende paso a paso</span>
+      </button>
+      <button class="action-btn glass" onclick="navigate('calculator')">
+        <div class="action-icon-wrap calc">🧮</div>
+        <span class="action-label">Calculadora</span>
+        <span class="action-desc">Calcula tu tanque</span>
+      </button>
+      <button class="action-btn glass primary" onclick="toggleChatbot()">
+        <div class="action-icon-wrap chat">🤖</div>
+        <span class="action-label">Chat de Ayuda</span>
+        <span class="action-desc">Resuelve tus dudas</span>
+      </button>
+      <a class="action-btn glass wa" href="https://wa.me/573005560572?text=Hola%20RISC%20Ingeniería%2C%20necesito%20información" target="_blank" rel="noopener">
+        <div class="action-icon-wrap whatsapp">💬</div>
+        <span class="action-label">WhatsApp</span>
+        <span class="action-desc">Contáctanos directo</span>
+      </a>
+    </div>
+
+    <!-- Sobre nosotros -->
+    <div class="info-section animated-card">
+      <div class="info-icon-wrap">🌿</div>
+      <h3>¿Quiénes somos?</h3>
+      <p>
+        <strong>RISC Ingeniería S.A.S</strong> es una empresa especializada en mantenimiento de sistemas sépticos, 
+        tratamiento de aguas residuales y manejo responsable de subproductos como lodos, grasas y gases. 
+        Nos enfocamos en soluciones ambientales responsables, educación al usuario y optimización del mantenimiento sanitario.
+      </p>
+    </div>
+
+    <div class="info-section animated-card">
+      <div class="info-icon-wrap">🎯</div>
+      <h3>¿Qué hacemos por ti?</h3>
+      <p>
+        Te brindamos herramientas fáciles, visuales e interactivas para aprender sobre sistemas sépticos, 
+        calcular el mantenimiento de tu tanque, encontrar los productos adecuados y contactar servicios 
+        profesionales cuando lo necesites.
+      </p>
+    </div>
+
+    <!-- CTA final -->
+    <div class="cta-banner">
+      <h3>¿Necesitas mantenimiento?</h3>
+      <p>Contáctanos hoy y recibe una evaluación gratuita de tu sistema séptico</p>
+      <a class="cta-btn" href="https://wa.me/573005560572?text=Hola%2C%20necesito%20una%20evaluación%20de%20mi%20sistema%20séptico" target="_blank" rel="noopener">Solicitar evaluación gratuita →</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PÁGINA: SERVICIOS
+       ══════════════════════════════════ -->
+  <section id="page-services" class="page">
+    <div class="section-header">
+      <h2>🛠️ Nuestros Servicios</h2>
+      <p>Soluciones profesionales para su sistema séptico</p>
+    </div>
+    <div id="services-list">
+      <div class="loading"><div class="spinner"></div>Cargando servicios...</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PÁGINA: PRODUCTOS
+       ══════════════════════════════════ -->
+  <section id="page-products" class="page">
+    <div class="section-header">
+      <h2>🛒 Productos</h2>
+      <p>Productos especializados para el mantenimiento de su sistema</p>
+    </div>
+
+    <!-- Tabs de categoría -->
+    <div class="category-tabs">
+      <button class="tab-btn active" data-cat="Todos" onclick="filterProducts('Todos')">Todos</button>
+      <button class="tab-btn" data-cat="Lodos" onclick="filterProducts('Lodos')">🧪 Lodos</button>
+      <button class="tab-btn" data-cat="Grasas" onclick="filterProducts('Grasas')">🫧 Grasas</button>
+      <button class="tab-btn" data-cat="Gases" onclick="filterProducts('Gases')">💨 Gases</button>
+      <button class="tab-btn" data-cat="Agua" onclick="filterProducts('Agua')">💧 Agua</button>
+    </div>
+
+    <div id="products-list">
+      <div class="loading"><div class="spinner"></div>Cargando productos...</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PÁGINA: GUÍAS
+       ══════════════════════════════════ -->
+  <section id="page-guides" class="page">
+    <div class="section-header">
+      <h2>📚 Guías Interactivas</h2>
+      <p>Aprenda paso a paso sobre el mantenimiento de su sistema séptico</p>
+    </div>
+    <div id="guides-list">
+      <div class="loading"><div class="spinner"></div>Cargando guías...</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       PÁGINA: CALCULADORA
+       ══════════════════════════════════ -->
+  <section id="page-calculator" class="page">
+    <div class="section-header">
+      <h2>🧮 Calculadora de Tanque</h2>
+      <p>Ingrese las dimensiones de su tanque séptico para obtener recomendaciones</p>
+    </div>
+
+    <div class="calc-form">
+      <div class="form-group">
+        <label for="calc-largo">📏 Largo (metros)</label>
+        <input type="number" id="calc-largo" placeholder="Ej: 2.5" min="0.1" step="0.1">
+        <div class="hint">Medida interna del tanque en metros</div>
+      </div>
+      <div class="form-group">
+        <label for="calc-ancho">📐 Ancho (metros)</label>
+        <input type="number" id="calc-ancho" placeholder="Ej: 1.5" min="0.1" step="0.1">
+        <div class="hint">Medida interna del tanque en metros</div>
+      </div>
+      <div class="form-group">
+        <label for="calc-prof">⬇️ Profundidad (metros)</label>
+        <input type="number" id="calc-prof" placeholder="Ej: 1.8" min="0.1" step="0.1">
+        <div class="hint">Desde la superficie hasta el fondo del tanque</div>
+      </div>
+      <button class="btn-calculate" onclick="calculate()">Calcular 🔍</button>
+    </div>
+
+    <div id="calc-results" class="calc-results"></div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       CHATBOT
+       ══════════════════════════════════ -->
+  <div id="chatbot-overlay" class="chatbot-overlay" onclick="toggleChatbot()"></div>
+  <div id="chatbot-panel" class="chatbot-panel">
+    <div class="chatbot-header">
+      <h3>🤖 Asistente RISC</h3>
+      <button class="chatbot-close" onclick="toggleChatbot()">✕</button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages"></div>
+    <div class="chatbot-questions">
+      <button class="question-btn" onclick="askQuestion(0)">¿Cómo limpiar un tanque séptico?</button>
+      <button class="question-btn" onclick="askQuestion(1)">¿Cada cuánto hacer mantenimiento?</button>
+      <button class="question-btn" onclick="askQuestion(2)">¿Qué producto usar para lodos?</button>
+      <button class="question-btn" onclick="askQuestion(3)">¿Qué producto usar para grasas?</button>
+      <button class="question-btn" onclick="askQuestion(4)">¿Cómo manejar los gases del tanque?</button>
+      <button class="question-btn" onclick="askQuestion(5)">¿Cómo contactar a RISC?</button>
+      <button class="question-btn" onclick="askQuestion(6)">¿Qué servicios ofrecen?</button>
+      <button class="question-btn" onclick="askQuestion(7)">¿Tienen servicio de emergencia?</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       NAVEGACIÓN INFERIOR
+       ══════════════════════════════════ -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-page="home">
+      <span class="nav-icon">🏠</span>
+      Inicio
+    </button>
+    <button class="nav-btn" data-page="services">
+      <span class="nav-icon">🛠️</span>
+      Servicios
+    </button>
+    <button class="nav-btn" data-page="calculator">
+      <span class="nav-icon">🧮</span>
+      Calc
+    </button>
+    <button class="nav-btn" data-page="guides">
+      <span class="nav-icon">📚</span>
+      Guías
+    </button>
+    <button class="nav-btn" data-page="products">
+      <span class="nav-icon">🛒</span>
+      Productos
+    </button>
+  </nav>
+
+  <!-- Botón flotante WhatsApp -->
+  <a class="whatsapp-float"
+     href="https://wa.me/573005560572?text=Hola%20RISC%20Ingeniería%2C%20necesito%20información"
+     target="_blank" rel="noopener"
+     aria-label="Contactar por WhatsApp">
+    <svg class="wa-icon" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
