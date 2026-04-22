@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1B5E20">
+  <title>SaniSostenible 2.0 — Prototipo I3M 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/proto.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 1: SPLASH
+     ════════════════════════════════════════════════════ -->
+<div id="screen-splash" class="screen active">
+  <div class="splash-bg">
+    <div class="splash-particles">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="splash-content">
+      <div class="splash-logo-ring">
+        <img src="/img/logoempresa.png" alt="RISC" class="splash-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="splash-logo-fallback" style="display:none">🌿</div>
+      </div>
+      <h1 class="splash-title">SaniSostenible</h1>
+      <span class="splash-version">2.0</span>
+      <p class="splash-sub">por RISC Ingeniería S.A.S</p>
+      <div class="splash-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <div class="splash-badge">
+      <span>🏆 Concurso I3M 2026-1</span>
+      <span>Universidad Santo Tomás · Tunja</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 2: ONBOARDING 1
+     ════════════════════════════════════════════════════ -->
+<div id="screen-onboarding-1" class="screen">
+  <div class="onboard-wrap">
+    <div class="onboard-illo">
+      <div class="illo-septic">
+        <div class="illo-ground"></div>
+        <div class="illo-tank">
+          <div class="illo-tank-inner">
+            <div class="illo-lodo"></div>
+            <div class="illo-agua"></div>
+          </div>
+          <div class="illo-label">Tanque Séptico</div>
+        </div>
+        <div class="illo-pipe left"></div>
+        <div class="illo-pipe right"></div>
+        <div class="illo-house">🏠</div>
+        <div class="illo-tree">🌳</div>
+      </div>
+    </div>
+    <div class="onboard-content">
+      <div class="onboard-tag">🌍 Colombia Rural</div>
+      <h2 class="onboard-title">El saneamiento rural necesita atención</h2>
+      <p class="onboard-desc">El <strong>70%</strong> de los sistemas sépticos rurales en Colombia fallan prematuramente por falta de información y mantenimiento.</p>
+      <div class="stat-highlight">
+        <span class="stat-big">70%</span>
+        <span class="stat-desc">fallan en los primeros 5 años</span>
+      </div>
+    </div>
+    <div class="onboard-nav">
+      <div class="page-dots">
+        <span class="pdot active"></span>
+        <span class="pdot"></span>
+        <span class="pdot"></span>
+      </div>
+      <button class="btn-primary" onclick="goTo('screen-onboarding-2')">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 3: ONBOARDING 2
+     ════════════════════════════════════════════════════ -->
+<div id="screen-onboarding-2" class="screen">
+  <div class="onboard-wrap">
+    <div class="onboard-illo">
+      <div class="illo-modules">
+        <div class="illo-module mod-green">
+          <span>🔍</span>
+          <p>Diagnóstico</p>
+        </div>
+        <div class="illo-module mod-blue">
+          <span>🌱</span>
+          <p>Eco-Compost</p>
+        </div>
+        <div class="illo-module mod-teal">
+          <span>📚</span>
+          <p>Guías</p>
+        </div>
+        <div class="illo-module mod-amber">
+          <span>🧮</span>
+          <p>Calculadora</p>
+        </div>
+      </div>
+    </div>
+    <div class="onboard-content">
+      <div class="onboard-tag">✨ La Solución</div>
+      <h2 class="onboard-title">Un asistente técnico siempre contigo</h2>
+      <p class="onboard-desc">Diagnóstico inteligente, guías interactivas, calculadora técnica y el primer módulo de <strong>economía circular</strong> para lodos sépticos.</p>
+    </div>
+    <div class="onboard-nav">
+      <div class="page-dots">
+        <span class="pdot"></span>
+        <span class="pdot active"></span>
+        <span class="pdot"></span>
+      </div>
+      <button class="btn-primary" onclick="goTo('screen-onboarding-3')">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 4: ONBOARDING 3
+     ════════════════════════════════════════════════════ -->
+<div id="screen-onboarding-3" class="screen">
+  <div class="onboard-wrap">
+    <div class="onboard-illo">
+      <div class="illo-free">
+        <div class="illo-free-badge">
+          <span class="free-icon">🆓</span>
+          <span class="free-text">ACCESO LIBRE</span>
+        </div>
+        <div class="illo-free-items">
+          <div class="fi-item">✅ Sin registro</div>
+          <div class="fi-item">✅ Sin internet (offline)</div>
+          <div class="fi-item">✅ Sin costo</div>
+          <div class="fi-item">✅ En español</div>
+        </div>
+      </div>
+    </div>
+    <div class="onboard-content">
+      <div class="onboard-tag">💚 Modelo Social</div>
+      <h2 class="onboard-title">Gratis. Offline. Para todos.</h2>
+      <p class="onboard-desc">Diseñado para comunidades rurales con conectividad limitada. Funciona sin internet, sin crear cuenta, desde cualquier smartphone.</p>
+    </div>
+    <div class="onboard-nav">
+      <div class="page-dots">
+        <span class="pdot"></span>
+        <span class="pdot"></span>
+        <span class="pdot active"></span>
+      </div>
+      <button class="btn-primary btn-start" onclick="goTo('screen-home')">Comenzar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 5: HOME / DASHBOARD
+     ════════════════════════════════════════════════════ -->
+<div id="screen-home" class="screen has-nav">
+  <div class="scroll-content">
+    <!-- Hero -->
+    <div class="home-hero">
+      <div class="hero-particles"><span></span><span></span><span></span></div>
+      <div class="hero-inner">
+        <img src="/img/logoempresa.png" alt="RISC" class="hero-logo-sm" onerror="this.style.display='none'">
+        <div class="hero-text">
+          <h1>SaniSostenible 2.0</h1>
+          <p>RISC Ingeniería S.A.S · Acceso Libre</p>
+        </div>
+        <div class="hero-badge-new">NUEVO</div>
+      </div>
+      <div class="hero-wave"><svg viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M0,20 C100,40 200,0 300,20 C350,30 380,25 400,20 L400,40 L0,40 Z" fill="var(--bg)"/></svg></div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar-proto">
+      <div class="stat-p"><span class="sn">100+</span><span class="sl">Clientes</span></div>
+      <div class="stat-p"><span class="sn">10+</span><span class="sl">Años</span></div>
+      <div class="stat-p"><span class="sn">98%</span><span class="sl">Satisfacción</span></div>
+    </div>
+
+    <!-- Quick Actions 2x3 -->
+    <div class="section-title-row">
+      <h3>Módulos</h3>
+      <span class="badge-free">Todo gratis</span>
+    </div>
+    <div class="quick-grid">
+      <button class="qbtn" onclick="goTo('screen-diagnostico')">
+        <div class="qicon diag">🔍</div>
+        <span class="qlabel">Diagnóstico</span>
+        <span class="qdesc">Detecta problemas</span>
+        <span class="qbadge new">NUEVO</span>
+      </button>
+      <button class="qbtn" onclick="goTo('screen-ecocompost')">
+        <div class="qicon eco">🌱</div>
+        <span class="qlabel">Eco-Compost</span>
+        <span class="qdesc">Transforma residuos</span>
+        <span class="qbadge new">NUEVO</span>
+      </button>
+      <button class="qbtn" onclick="goTo('screen-guias')">
+        <div class="qicon guide">📚</div>
+        <span class="qlabel">Guías</span>
+        <span class="qdesc">Paso a paso</span>
+      </button>
+      <button class="qbtn" onclick="goTo('screen-calculadora')">
+        <div class="qicon calc">🧮</div>
+        <span class="qlabel">Calculadora</span>
+        <span class="qdesc">Calcula tu tanque</span>
+      </button>
+      <button class="qbtn" onclick="navTo('home','services')">
+        <div class="qicon serv">🛠️</div>
+        <span class="qlabel">Servicios</span>
+        <span class="qdesc">Mantenimiento</span>
+      </button>
+      <a class="qbtn" href="https://wa.me/573005560572?text=Hola%20RISC" target="_blank" rel="noopener">
+        <div class="qicon wa">💬</div>
+        <span class="qlabel">WhatsApp</span>
+        <span class="qdesc">Contacto directo</span>
+      </a>
+    </div>
+
+    <!-- ODS Banner -->
+    <div class="ods-banner">
+      <div class="ods-icon">🌊</div>
+      <div class="ods-text">
+        <strong>Alineado con ODS 6</strong>
+        <p>Agua limpia y saneamiento para todos</p>
+      </div>
+      <div class="ods-num">6</div>
+    </div>
+
+    <!-- Alerta destacada -->
+    <div class="alert-card alert-yellow" onclick="goTo('screen-diagnostico')">
+      <span class="alert-icon">⚠️</span>
+      <div class="alert-body">
+        <strong>¿Cuándo fue el último mantenimiento?</strong>
+        <p>Haz un diagnóstico rápido gratuito →</p>
+      </div>
+      <span class="alert-arrow">›</span>
+    </div>
+    <div style="height: 20px;"></div>
+  </div>
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav-proto">
+    <button class="bnav active" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 6: DIAGNÓSTICO — SELECCIÓN
+     ════════════════════════════════════════════════════ -->
+<div id="screen-diagnostico" class="screen has-nav">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-home')">←</button>
+      <h2>🔍 Diagnóstico Rápido</h2>
+      <span class="free-pill">Gratis</span>
+    </div>
+    <p class="inner-sub">¿Qué parte de tu sistema quieres revisar?</p>
+
+    <div class="component-list">
+      <button class="comp-card" onclick="startDiag('tanque')">
+        <div class="comp-icon tank-icon">🪣</div>
+        <div class="comp-info">
+          <strong>Tanque Séptico</strong>
+          <span>Acumulación, funcionamiento, mantenimiento</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="comp-card" onclick="startDiag('trampa')">
+        <div class="comp-icon trap-icon">🫧</div>
+        <div class="comp-info">
+          <strong>Trampa de Grasas</strong>
+          <span>Limpieza, obstrucción, flujo</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="comp-card" onclick="startDiag('campo')">
+        <div class="comp-icon field-icon">💧</div>
+        <div class="comp-info">
+          <strong>Campo de Infiltración</strong>
+          <span>Saturación, filtrado, olores en superficie</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="comp-card" onclick="startDiag('gases')">
+        <div class="comp-icon gas-icon">💨</div>
+        <div class="comp-info">
+          <strong>Gases y Olores</strong>
+          <span>H₂S, ventilación, biogás</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+    </div>
+
+    <div class="info-note">
+      <span>ℹ️</span>
+      <p>Diagnóstico sin costo · Acceso libre · No requiere registro</p>
+    </div>
+  </div>
+  <nav class="bottom-nav-proto">
+    <button class="bnav" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center active" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 7: DIAGNÓSTICO — PREGUNTAS
+     ════════════════════════════════════════════════════ -->
+<div id="screen-diag-preguntas" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-diagnostico')">←</button>
+      <h2 id="diag-title">🪣 Tanque Séptico</h2>
+      <span id="diag-step-label" class="step-label">1/3</span>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="diag-progress" style="width:33%"></div>
+      </div>
+      <div class="progress-steps">
+        <div class="ps active" id="ps1">1</div>
+        <div class="ps" id="ps2">2</div>
+        <div class="ps" id="ps3">3</div>
+      </div>
+    </div>
+
+    <!-- Pregunta -->
+    <div class="question-card">
+      <p class="q-context" id="diag-q-context">Mantenimiento</p>
+      <h3 class="q-text" id="diag-question">¿Hace cuánto fue el último mantenimiento del tanque?</h3>
+    </div>
+
+    <!-- Opciones -->
+    <div class="options-list" id="diag-options"></div>
+
+    <button class="btn-primary btn-next" id="diag-next-btn" disabled onclick="diagNext()">
+      Siguiente →
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 8: DIAGNÓSTICO — RESULTADO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-diag-resultado" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-diagnostico')">←</button>
+      <h2>Resultado</h2>
+      <span></span>
+    </div>
+
+    <!-- Semáforo -->
+    <div class="result-card" id="result-card">
+      <div class="result-icon" id="result-icon">🟢</div>
+      <h2 class="result-title" id="result-title">Tu sistema está bien</h2>
+      <p class="result-subtitle" id="result-subtitle">Mantén las buenas prácticas y programa el próximo mantenimiento.</p>
+      <div class="result-badge" id="result-badge">✅ ESTADO: ÓPTIMO</div>
+    </div>
+
+    <!-- Acciones recomendadas -->
+    <div class="section-title-row">
+      <h3>Acciones recomendadas</h3>
+    </div>
+    <div class="actions-list" id="result-actions"></div>
+
+    <!-- CTAs -->
+    <a class="btn-whatsapp" href="https://wa.me/573005560572?text=Hola%20RISC%2C%20hice%20el%20diagn%C3%B3stico%20y%20necesito%20ayuda" target="_blank" rel="noopener">
+      💬 Solicitar visita técnica RISC
+    </a>
+    <button class="btn-outline" onclick="goTo('screen-ecocompost')" id="btn-eco-result">
+      🌱 Ver módulo Eco-Compost
+    </button>
+    <button class="btn-ghost" onclick="goTo('screen-diagnostico')">
+      🔄 Hacer otro diagnóstico
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 9: ECO-COMPOST — ENTRADA
+     ════════════════════════════════════════════════════ -->
+<div id="screen-ecocompost" class="screen has-nav">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-home')">←</button>
+      <h2>🌱 Eco-Compost</h2>
+      <span class="free-pill">Gratis</span>
+    </div>
+
+    <!-- Hero card eco -->
+    <div class="eco-hero-card">
+      <div class="eco-hero-illo">
+        <div class="eco-cycle">
+          <div class="eco-step">🪣<span>Lodo</span></div>
+          <div class="eco-arrow">→</div>
+          <div class="eco-step">⚗️<span>Tratar</span></div>
+          <div class="eco-arrow">→</div>
+          <div class="eco-step">🌿<span>Compost</span></div>
+          <div class="eco-arrow">→</div>
+          <div class="eco-step">🌾<span>Suelo</span></div>
+        </div>
+      </div>
+      <p class="eco-hero-text">Transforma los lodos de tu tanque séptico en <strong>compost orgánico de valor</strong> — economía circular aplicada al saneamiento.</p>
+    </div>
+
+    <div class="section-title-row">
+      <h3>¿En qué etapa estás?</h3>
+    </div>
+
+    <div class="eco-stages">
+      <button class="eco-stage-card" onclick="goTo('screen-eco-diagnostico')">
+        <span class="eco-stage-num">01</span>
+        <div class="eco-stage-info">
+          <strong>🔍 Diagnóstico del lodo</strong>
+          <span>Evalúa si tus lodos son aptos para compostar</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="eco-stage-card" onclick="goTo('screen-eco-protocolo')">
+        <span class="eco-stage-num">02</span>
+        <div class="eco-stage-info">
+          <strong>🌡️ Protocolo de tratamiento</strong>
+          <span>Temperatura, tiempo y mezcla correcta</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="eco-stage-card" onclick="goTo('screen-eco-compostera')">
+        <span class="eco-stage-num">03</span>
+        <div class="eco-stage-info">
+          <strong>🏗️ Construir compostera</strong>
+          <span>Dimensiones y materiales necesarios</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+      <button class="eco-stage-card" onclick="goTo('screen-eco-calendario')">
+        <span class="eco-stage-num">04</span>
+        <div class="eco-stage-info">
+          <strong>📅 Monitorear compostera activa</strong>
+          <span>Calendario interactivo de 12 semanas</span>
+        </div>
+        <span class="comp-arrow">›</span>
+      </button>
+    </div>
+
+    <!-- Subproducto badge -->
+    <div class="producto-card-mini">
+      <div class="prod-mini-icon">🌿</div>
+      <div class="prod-mini-info">
+        <strong>HumusSéptico®</strong>
+        <span>Compost orgánico certificado · $8.000/kg</span>
+      </div>
+      <span class="prod-mini-tag">Subproducto</span>
+    </div>
+    <div style="height: 20px;"></div>
+  </div>
+  <nav class="bottom-nav-proto">
+    <button class="bnav" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 10: ECO-COMPOST — DIAGNÓSTICO DEL LODO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-eco-diagnostico" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-ecocompost')">←</button>
+      <h2>🔍 Diagnóstico del Lodo</h2>
+      <span class="step-label">Paso 1/4</span>
+    </div>
+
+    <div class="eco-diag-cards">
+      <div class="eco-q-card">
+        <span class="eco-q-icon">💩</span>
+        <p class="eco-q-text">¿El lodo proviene de un sistema <strong>doméstico residencial</strong> (sin químicos industriales)?</p>
+        <div class="eco-q-opts">
+          <button class="eco-opt" data-val="yes" onclick="ecoOptSelect(this, 'q1')">✅ Sí, solo doméstico</button>
+          <button class="eco-opt" data-val="no" onclick="ecoOptSelect(this, 'q1')">❌ Incluye desechos industriales</button>
+        </div>
+      </div>
+      <div class="eco-q-card">
+        <span class="eco-q-icon">💊</span>
+        <p class="eco-q-text">¿Se han usado <strong>antibióticos o desinfectantes</strong> fuertes en los últimos 3 meses?</p>
+        <div class="eco-q-opts">
+          <button class="eco-opt" data-val="no" onclick="ecoOptSelect(this, 'q2')">✅ No, no se usan</button>
+          <button class="eco-opt" data-val="yes" onclick="ecoOptSelect(this, 'q2')">⚠️ Sí, regularmente</button>
+        </div>
+      </div>
+      <div class="eco-q-card">
+        <span class="eco-q-icon">🔬</span>
+        <p class="eco-q-text">¿Existe algún análisis de laboratorio reciente del lodo?</p>
+        <div class="eco-q-opts">
+          <button class="eco-opt" data-val="yes" onclick="ecoOptSelect(this, 'q3')">✅ Sí, Clase A o B</button>
+          <button class="eco-opt" data-val="maybe" onclick="ecoOptSelect(this, 'q3')">⚪ No, pero el sistema es doméstico</button>
+          <button class="eco-opt" data-val="no" onclick="ecoOptSelect(this, 'q3')">❌ No y hay factores de riesgo</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="eco-diag-btn" onclick="evaluateEcoDiag()" disabled>
+      Evaluar aptitud →
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 11: ECO-COMPOST — RESULTADO DIAGNÓSTICO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-eco-resultado" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-eco-diagnostico')">←</button>
+      <h2>Resultado</h2>
+      <span></span>
+    </div>
+    <div class="result-card" id="eco-result-card">
+      <div class="result-icon" id="eco-result-icon">🟢</div>
+      <h2 class="result-title" id="eco-result-title">¡Lodo apto para compostar!</h2>
+      <p class="result-subtitle" id="eco-result-subtitle">Tus lodos cumplen con los criterios básicos del Decreto 1287 de 2014.</p>
+      <div class="result-badge" id="eco-result-badge">✅ CLASIFICACIÓN: APTO</div>
+    </div>
+    <div class="eco-subproducto" id="eco-subproducto-info">
+      <h3>🌿 Subproducto que puedes generar</h3>
+      <div class="subprod-card">
+        <div class="subprod-icon">🌿</div>
+        <div class="subprod-info">
+          <strong>HumusSéptico®</strong>
+          <p>Compost orgánico de alta calidad para uso agrícola</p>
+          <div class="subprod-value">Valor estimado: <strong>$8.000 — $12.000/kg</strong></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="goTo('screen-eco-protocolo')">Ver protocolo de tratamiento →</button>
+    <button class="btn-outline" onclick="goTo('screen-eco-calendario')">Ir al calendario de monitoreo</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 12: ECO-COMPOST — PROTOCOLO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-eco-protocolo" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-ecocompost')">←</button>
+      <h2>🌡️ Protocolo de Tratamiento</h2>
+      <span class="step-label">Paso 2/4</span>
+    </div>
+
+    <div class="protocol-steps">
+      <div class="proto-step">
+        <div class="proto-num">1</div>
+        <div class="proto-content">
+          <strong>Extracción del lodo</strong>
+          <p>Extraer entre <strong>20-30% del volumen</strong> total del tanque. Usar equipo de protección personal completo.</p>
+          <div class="proto-tip">💡 No extraer más del 30% para no alterar el proceso biológico activo.</div>
+        </div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">2</div>
+        <div class="proto-content">
+          <strong>Deshidratación (2-4 semanas)</strong>
+          <p>Extender el lodo en camas de secado de <strong>20-30 cm de espesor</strong>. Humedad objetivo: 50-60%.</p>
+          <div class="proto-tip">💡 El lodo debe perder el 60-70% de su peso en agua antes de compostar.</div>
+        </div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">3</div>
+        <div class="proto-content">
+          <strong>Mezcla con material carbonoso</strong>
+          <p>Relación C/N 25-35:1. Por cada parte de lodo, agregar <strong>2-3 partes</strong> de material seco (aserrín, paja, hojas).</p>
+          <div class="proto-metric">
+            <div class="metric-item"><span>🌡️</span><strong>55-65°C</strong><small>Temperatura</small></div>
+            <div class="metric-item"><span>💧</span><strong>50-60%</strong><small>Humedad</small></div>
+            <div class="metric-item"><span>🔄</span><strong>25-35:1</strong><small>Relación C/N</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">4</div>
+        <div class="proto-content">
+          <strong>Compostaje activo (8-10 semanas)</strong>
+          <p>Voltear la pila <strong>cada 7-10 días</strong>. Mantener temperatura superior a 55°C durante al menos 3 semanas seguidas.</p>
+        </div>
+      </div>
+      <div class="proto-step last">
+        <div class="proto-num">5</div>
+        <div class="proto-content">
+          <strong>Maduración y uso (2-4 semanas)</strong>
+          <p>El compost maduro tiene color oscuro, olor a tierra y temperatura estable. Listo para aplicar en suelos agrícolas.</p>
+          <div class="proto-tip success">✅ Resultado: <strong>HumusSéptico®</strong> — Compost Clase A</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="goTo('screen-eco-compostera')">Ver construcción de compostera →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 13: ECO-COMPOST — COMPOSTERA
+     ════════════════════════════════════════════════════ -->
+<div id="screen-eco-compostera" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-ecocompost')">←</button>
+      <h2>🏗️ Construcción de Compostera</h2>
+      <span class="step-label">Paso 3/4</span>
+    </div>
+
+    <div class="compostera-illo">
+      <div class="comp-3d">
+        <div class="comp-wall back"></div>
+        <div class="comp-wall left"></div>
+        <div class="comp-wall right"></div>
+        <div class="comp-floor"></div>
+        <div class="comp-content">
+          <div class="comp-layer lodo">Lodo</div>
+          <div class="comp-layer carbo">Carbonoso</div>
+          <div class="comp-layer lodo">Lodo</div>
+          <div class="comp-layer carbo">Carbonoso</div>
+        </div>
+        <div class="comp-dim dim-w">1.5 m</div>
+        <div class="comp-dim dim-h">1.2 m</div>
+      </div>
+    </div>
+
+    <div class="compostera-specs">
+      <div class="spec-row">
+        <span class="spec-icon">📐</span>
+        <div class="spec-info">
+          <strong>Dimensiones mínimas</strong>
+          <span>1.5 m × 1.5 m × 1.2 m altura</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <span class="spec-icon">🧱</span>
+        <div class="spec-info">
+          <strong>Materiales</strong>
+          <span>Guadua, madera, ladrillo o bloque. Piso sin impermeabilizar para drenaje.</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <span class="spec-icon">🌬️</span>
+        <div class="spec-info">
+          <strong>Ventilación</strong>
+          <span>Rendijas laterales de 3-5 cm cada 30 cm para aireación pasiva.</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <span class="spec-icon">☀️</span>
+        <div class="spec-info">
+          <strong>Ubicación</strong>
+          <span>Semisombra, alejada 5 m de fuentes de agua. Pendiente suave para drenaje.</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="goTo('screen-eco-calendario')">Ver calendario de monitoreo →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 14: ECO-COMPOST — CALENDARIO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-eco-calendario" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-ecocompost')">←</button>
+      <h2>📅 Calendario de Monitoreo</h2>
+      <span class="step-label">Paso 4/4</span>
+    </div>
+
+    <div class="cal-progress-summary">
+      <div class="cal-prog-item">
+        <strong id="cal-completed-count">0</strong>
+        <span>Semanas completadas</span>
+      </div>
+      <div class="cal-prog-bar">
+        <div class="cal-prog-fill" id="cal-prog-fill" style="width:0%"></div>
+      </div>
+      <div class="cal-prog-item">
+        <strong>12</strong>
+        <span>Semanas totales</span>
+      </div>
+    </div>
+
+    <div class="cal-phases">
+      <!-- Fase 1 -->
+      <div class="cal-phase-header">🔥 Fase 1: Compostaje Activo (Semanas 1-8)</div>
+      <div class="cal-weeks" id="cal-active-phase"></div>
+      <!-- Fase 2 -->
+      <div class="cal-phase-header">🌿 Fase 2: Maduración (Semanas 9-12)</div>
+      <div class="cal-weeks" id="cal-mature-phase"></div>
+    </div>
+
+    <!-- Panel de acciones de la semana activa -->
+    <div class="cal-week-panel" id="cal-week-panel" style="display:none;">
+      <h4 id="cal-panel-title">Semana 1 — Acciones</h4>
+      <div id="cal-panel-actions"></div>
+      <button class="btn-primary btn-sm" onclick="markWeekDone()">✅ Marcar como completada</button>
+    </div>
+
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 15: SERVICIOS
+     ════════════════════════════════════════════════════ -->
+<div id="screen-servicios" class="screen has-nav">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-home')">←</button>
+      <h2>🛠️ Servicios</h2>
+      <span class="free-pill">RISC</span>
+    </div>
+
+    <div class="serv-hero-card">
+      <div class="serv-hero-body">
+        <div class="serv-hero-icon">🔧</div>
+        <div>
+          <strong>Ingeniería en saneamiento</strong>
+          <p>Soluciones profesionales para sistemas sépticos rurales y periurbanos.</p>
+        </div>
+      </div>
+      <div class="serv-hero-stats">
+        <div class="serv-stat"><span>10+</span><small>Años</small></div>
+        <div class="serv-stat"><span>100+</span><small>Clientes</small></div>
+        <div class="serv-stat"><span>98%</span><small>Satisf.</small></div>
+      </div>
+    </div>
+
+    <div class="section-title-row" style="margin-top:16px">
+      <h3>Nuestros servicios</h3>
+    </div>
+
+    <div class="serv-list">
+      <div class="serv-card">
+        <div class="serv-card-icon">🔧</div>
+        <div class="serv-card-body">
+          <strong>Mantenimiento de Tren Séptico</strong>
+          <p>Inspección, limpieza y mantenimiento preventivo completo del sistema séptico.</p>
+          <div class="serv-benefits">
+            <span>✔ Previene desbordamientos</span>
+            <span>✔ Extiende vida útil</span>
+            <span>✔ Protege el medio ambiente</span>
+          </div>
+        </div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-card-icon">🧹</div>
+        <div class="serv-card-body">
+          <strong>Limpieza de Trampas de Grasa</strong>
+          <p>Retiro profesional de grasas y sólidos con disposición normativa.</p>
+          <div class="serv-benefits">
+            <span>✔ Evita obstrucciones</span>
+            <span>✔ Elimina malos olores</span>
+            <span>✔ Cumple normativa ambiental</span>
+          </div>
+        </div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-card-icon">💧</div>
+        <div class="serv-card-body">
+          <strong>Tratamiento de Aguas Residuales</strong>
+          <p>Sistemas biológicos y químicos para purificación de aguas domésticas e industriales.</p>
+          <div class="serv-benefits">
+            <span>✔ Agua reutilizable</span>
+            <span>✔ Reduce contaminación</span>
+            <span>✔ Cumplimiento normativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-card alert-green" style="margin-top:12px" onclick="window.open('https://wa.me/573005560572?text=Hola%20RISC%2C%20quiero%20solicitar%20un%20servicio','_blank')">
+      <span class="alert-icon">💬</span>
+      <div class="alert-body">
+        <strong>Solicitar servicio</strong>
+        <p>Escríbenos por WhatsApp para agendar →</p>
+      </div>
+      <span class="alert-arrow">›</span>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="bottom-nav-proto">
+    <button class="bnav" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav active" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 16: CALCULADORA — FORMULARIO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-calculadora" class="screen has-nav">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-home')">←</button>
+      <h2>🧮 Calculadora</h2>
+      <span class="free-pill">Gratis</span>
+    </div>
+
+    <div class="calc-banner">
+      <div class="calc-banner-illo">
+        <div class="cbi-tank">🪣</div>
+        <div class="cbi-arrow">→</div>
+        <div class="cbi-result">📊</div>
+      </div>
+      <p class="calc-banner-text">Ingresa las medidas de tu tanque y obtén la <strong>frecuencia óptima</strong> de mantenimiento según la norma colombiana.</p>
+    </div>
+    <p class="inner-sub">Calcula la frecuencia de mantenimiento de tu sistema.</p>
+
+    <div class="calc-card-proto">
+      <div class="calc-section-title">📐 Dimensiones del Tanque Séptico</div>
+      <div class="calc-field">
+        <label>Largo (m)</label>
+        <input type="number" id="p-calc-largo" placeholder="Ej: 2.5" min="0.1" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label>Ancho (m)</label>
+        <input type="number" id="p-calc-ancho" placeholder="Ej: 1.5" min="0.1" step="0.1" inputmode="decimal">
+      </div>
+      <div class="calc-field">
+        <label>Profundidad útil (m)</label>
+        <input type="number" id="p-calc-prof"  placeholder="Ej: 1.8" min="0.1" step="0.1" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="calc-card-proto" style="margin-top:12px">
+      <div class="calc-section-title">👥 Usuarios y Uso</div>
+      <div class="calc-field">
+        <label>N° de personas</label>
+        <input type="number" id="p-calc-personas" placeholder="Ej: 4" min="1" step="1" inputmode="numeric">
+      </div>
+      <div class="calc-field">
+        <label>Tipo de uso</label>
+        <div class="calc-select-group">
+          <button class="calc-sel-btn active" data-tipo="residencial" onclick="calcSelTipo(this)">🏠 Residencial</button>
+          <button class="calc-sel-btn" data-tipo="comercial" onclick="calcSelTipo(this)">🏢 Comercial</button>
+          <button class="calc-sel-btn" data-tipo="rural" onclick="calcSelTipo(this)">🌾 Rural</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary btn-block" onclick="calcularProto()" style="margin-top:16px">
+      Calcular frecuencia →
+    </button>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="bottom-nav-proto">
+    <button class="bnav" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav active" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 17: CALCULADORA — RESULTADO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-calc-resultado" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-calculadora')">←</button>
+      <h2>📊 Resultado</h2>
+      <span></span>
+    </div>
+
+    <div class="calc-result-hero" id="calc-result-hero">
+      <div class="crh-icon" id="crh-icon">⏱️</div>
+      <div class="crh-freq" id="crh-freq">— meses</div>
+      <div class="crh-label">Frecuencia recomendada de mantenimiento</div>
+      <div class="crh-vol" id="crh-vol">Volumen: — m³</div>
+    </div>
+
+    <div class="calc-result-card" id="calc-result-details">
+      <div class="crd-title">📋 Detalles del cálculo</div>
+      <div class="crd-row"><span>Volumen total</span><strong id="crd-vol">—</strong></div>
+      <div class="crd-row"><span>Carga hidráulica</span><strong id="crd-carga">—</strong></div>
+      <div class="crd-row"><span>Usuarios</span><strong id="crd-usuarios">—</strong></div>
+      <div class="crd-row"><span>Tipo de uso</span><strong id="crd-tipo">—</strong></div>
+      <div class="crd-row"><span>Estándar aplicado</span><strong>Res. 330 / 2017 MVCT</strong></div>
+    </div>
+
+    <div class="calc-result-card" id="calc-products-card">
+      <div class="crd-title">🛒 Productos recomendados para este mantenimiento</div>
+      <div id="calc-products-list"></div>
+    </div>
+
+    <div class="alert-card alert-blue" style="margin-top:12px" onclick="goTo('screen-diagnostico')">
+      <span class="alert-icon">🔍</span>
+      <div class="alert-body">
+        <strong>¿Quieres un diagnóstico completo?</strong>
+        <p>Detecta el estado actual del sistema →</p>
+      </div>
+      <span class="alert-arrow">›</span>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 17: GUÍAS — LISTA
+     ════════════════════════════════════════════════════ -->
+<div id="screen-guias" class="screen has-nav">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-home')">←</button>
+      <h2>📚 Guías Técnicas</h2>
+      <span class="free-pill">Gratis</span>
+    </div>
+
+    <div class="guia-banner">
+      <div class="guia-banner-icons">🪣 ♻️ 🌊 🌱</div>
+      <p>Aprende a operar y mantener tu sistema de saneamiento con guías paso a paso, validadas por expertos RISC.</p>
+      <div class="guia-banner-stat">4 guías disponibles · Acceso 100% gratis</div>
+    </div>
+
+    <!-- Barra de búsqueda / filtro -->
+    <div class="guia-search-bar">
+      <span>🔎</span>
+      <input type="text" placeholder="Buscar guía..." id="guia-search" oninput="filterGuias(this.value)">
+    </div>
+
+    <!-- Categorías -->
+    <div class="guia-cats" id="guia-cats">
+      <button class="gcat active" data-cat="all"    onclick="filterGuiaCat(this)">Todas</button>
+      <button class="gcat"        data-cat="tanque"  onclick="filterGuiaCat(this)">Tanque</button>
+      <button class="gcat"        data-cat="trampa"  onclick="filterGuiaCat(this)">Trampa Grasas</button>
+      <button class="gcat"        data-cat="campo"   onclick="filterGuiaCat(this)">Campo Irrigación</button>
+      <button class="gcat"        data-cat="compost" onclick="filterGuiaCat(this)">Eco-Compost</button>
+    </div>
+
+    <div class="guia-list" id="guia-list"></div>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="bottom-nav-proto">
+    <button class="bnav" onclick="goTo('screen-home')"><span>🏠</span><label>Inicio</label></button>
+    <button class="bnav" onclick="goTo('screen-servicios')"><span>🛠️</span><label>Servicios</label></button>
+    <button class="bnav bnav-center" onclick="goTo('screen-diagnostico')"><span>🔍</span><label>Diagnóstico</label></button>
+    <button class="bnav active" onclick="goTo('screen-guias')"><span>📚</span><label>Guías</label></button>
+    <button class="bnav" onclick="goTo('screen-calculadora')"><span>🧮</span><label>Calc</label></button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     PANTALLA 19: GUÍA — DETALLE / PASO A PASO
+     ════════════════════════════════════════════════════ -->
+<div id="screen-guia-detalle" class="screen">
+  <div class="scroll-content">
+    <div class="inner-header">
+      <button class="back-btn" onclick="goTo('screen-guias')">←</button>
+      <h2 id="guia-detalle-titulo">Guía</h2>
+      <span class="free-pill">Gratis</span>
+    </div>
+
+    <!-- Barra de progreso de pasos -->
+    <div class="guia-step-progress">
+      <div class="gsp-bar">
+        <div class="gsp-fill" id="gsp-fill" style="width:0%"></div>
+      </div>
+      <span class="gsp-label" id="gsp-label">Paso 1 de 5</span>
+    </div>
+
+    <!-- Paso actual -->
+    <div class="guia-step-card" id="guia-step-card">
+      <div class="gsc-num" id="gsc-num">01</div>
+      <div class="gsc-icon" id="gsc-icon">🔧</div>
+      <h3 class="gsc-title" id="gsc-title">Paso</h3>
+      <p class="gsc-desc"  id="gsc-desc">Descripción del paso</p>
+      <div class="gsc-tip" id="gsc-tip"></div>
+    </div>
+
+    <!-- Navegación pasos -->
+    <div class="guia-step-nav">
+      <button class="btn-secondary" id="btn-paso-prev" onclick="prevPaso()" disabled>← Anterior</button>
+      <button class="btn-primary"   id="btn-paso-next" onclick="nextPaso()">Siguiente →</button>
+    </div>
+
+    <!-- Completado -->
+    <div class="guia-completado" id="guia-completado" style="display:none">
+      <div class="gc-icon">🏆</div>
+      <h3>¡Guía completada!</h3>
+      <p>Has terminado todos los pasos correctamente.</p>
+      <button class="btn-primary btn-block" onclick="goTo('screen-guias')" style="margin-top:14px">Ver más guías →</button>
+      <button class="btn-wa btn-block" onclick="window.open('https://wa.me/573005560572','_blank')" style="margin-top:8px">💬 Contactar técnico RISC</button>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast" role="alert"></div>
+
+<!-- Device frame hint -->
+<div id="proto-hint" class="proto-hint" onclick="this.style.display='none'">
+  <strong>🎨 Prototipo I3M 2026-1</strong>
+  <p>SaniSostenible 2.0 · RISC Ingeniería S.A.S<br>Toca en cualquier lugar para cerrar</p>
+</div>
+
+<script src="/js/proto.js"></script>
+</body>
+</html>

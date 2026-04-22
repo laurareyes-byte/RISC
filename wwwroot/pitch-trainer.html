@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrenador de Pitch — SaniSostenible 2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --c-900: #1B5E20;
+  --c-700: #2E7D32;
+  --c-500: #4CAF50;
+  --c-100: #C8E6C9;
+  --c-50:  #E8F5E9;
+  --warn:  #F9A825;
+  --warn-light: #FFF8E1;
+  --err:   #C62828;
+  --err-light: #FFEBEE;
+  --ok:    #2E7D32;
+  --ok-light: #E8F5E9;
+  --bg:    #F0F4F0;
+  --white: #FFFFFF;
+  --gray-100: #F5F5F5;
+  --gray-400: #9E9E9E;
+  --gray-700: #616161;
+  --black: #212121;
+  --shadow: 0 2px 12px rgba(0,0,0,.10);
+  --radius: 12px;
+  --ff: 'Poppins', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--black);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+button { cursor: pointer; font-family: var(--ff); }
+h1,h2,h3 { line-height: 1.2; }
+
+/* ═══════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════ */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+
+/* ── Header ──────────────────────────────────── */
+.header {
+  background: var(--c-900);
+  color: var(--white);
+  padding: 20px 24px 16px;
+  margin-bottom: 24px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.header h1 { font-size: 1.25rem; font-weight: 700; }
+.header p  { font-size: .8rem; opacity: .75; margin-top: 2px; }
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 12px;
+}
+
+/* ── Progress ensayos ────────────────────────── */
+.ensayo-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .7rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  transition: all .3s;
+  cursor: default;
+}
+.dot.done   { background: var(--c-500); border-color: var(--c-500); color: var(--white); }
+.dot.active { background: var(--white); border-color: var(--white); color: var(--c-900); }
+.score-badge {
+  font-size: .65rem;
+  background: rgba(255,255,255,.15);
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: var(--white);
+}
+
+/* ═══════════════════════════════════════════════
+   VIEWS (tabs)
+═══════════════════════════════════════════════ */
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── Tab bar ─────────────────────────────────── */
+.tabs {
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  gap: 4px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  transition: all .2s;
+}
+.tab-btn.active {
+  background: var(--c-900);
+  color: var(--white);
+}
+
+/* ═══════════════════════════════════════════════
+   CARDS
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.card-title {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--c-700);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 12px;
+}
+
+/* ═══════════════════════════════════════════════
+   VIEW 1 — ENTRENADOR (script + timer)
+═══════════════════════════════════════════════ */
+
+/* ── Timer principal ─────────────────────────── */
+.timer-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ring-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+#ring-svg { transform: rotate(-90deg); }
+#ring-track { fill: none; stroke: var(--gray-100); stroke-width: 8; }
+#ring-progress { fill: none; stroke: var(--c-500); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset .5s linear, stroke .3s; }
+.ring-time {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ring-time .elapsed   { font-size: 1.5rem; font-weight: 700; color: var(--black); }
+.ring-time .total-lbl { font-size: .65rem; color: var(--gray-400); }
+
+/* ── Secciones ───────────────────────────────── */
+.sections-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: var(--gray-100);
+  border-radius: 8px;
+  padding: 4px;
+}
+.sec-chip {
+  flex: 1;
+  padding: 6px 4px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: .62rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all .2s;
+  line-height: 1.2;
+}
+.sec-chip.active { background: var(--c-900); color: var(--white); }
+.sec-chip.done   { background: var(--c-100); color: var(--c-700); }
+
+.sec-timer {
+  font-size: .75rem;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--gray-700);
+}
+#sec-time-display { font-weight: 700; color: var(--c-700); }
+#sec-time-display.warn  { color: var(--warn); }
+#sec-time-display.over  { color: var(--err); }
+
+/* ── Script block ────────────────────────────── */
+.script-block {
+  background: var(--c-50);
+  border-left: 4px solid var(--c-500);
+  border-radius: 0 8px 8px 0;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.script-block blockquote {
+  font-style: italic;
+  color: var(--black);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+.script-block blockquote em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--c-700);
+}
+
+.tips-block {
+  background: var(--warn-light);
+  border-left: 4px solid var(--warn);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  font-size: .8rem;
+  color: var(--black);
+  line-height: 1.6;
+}
+.tips-block strong { color: #7B6000; }
+
+/* ── Controls ────────────────────────────────── */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+.btn-primary   { background: var(--c-700); color: var(--white); }
+.btn-secondary { background: var(--gray-100); color: var(--gray-700); }
+.btn-danger    { background: var(--err-light); color: var(--err); }
+.btn-warn      { background: var(--warn-light); color: #7B6000; }
+.btn:hover { opacity: .9; transform: translateY(-1px); }
+.btn:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.btn-full { flex: 1; text-align: center; }
+
+/* ── Frases clave ────────────────────────────── */
+.phrase-chip {
+  display: inline-block;
+  background: var(--c-50);
+  border: 1px solid var(--c-100);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: .78rem;
+  margin: 4px;
+  color: var(--c-900);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════
+   VIEW 2 — Q&A DRILL
+═══════════════════════════════════════════════ */
+.qa-card { position: relative; }
+.qa-question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.qa-answer {
+  background: var(--c-50);
+  border-left: 4px solid var(--c-500);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  font-size: .85rem;
+  line-height: 1.6;
+  display: none;
+}
+.qa-answer.show { display: block; }
+.qa-score-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.qa-score-row span { font-size: .78rem; color: var(--gray-700); }
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform .15s;
+  color: var(--gray-400);
+}
+.star-btn.on { color: var(--warn); }
+.star-btn:hover { transform: scale(1.2); }
+.qa-counter { font-size: .75rem; color: var(--gray-400); text-align: right; margin-top: 8px; }
+.qa-nav { display: flex; gap: 10px; margin-top: 14px; }
+
+/* ═══════════════════════════════════════════════
+   VIEW 3 — EVALUACIÓN POS-ENSAYO
+═══════════════════════════════════════════════ */
+.eval-form { display: grid; gap: 14px; }
+.eval-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.eval-label {
+  font-size: .85rem;
+  font-weight: 500;
+  flex: 1;
+}
+.eval-label span { display: block; font-size: .7rem; color: var(--gray-400); font-weight: 400; }
+.stars { display: flex; gap: 4px; }
+.eval-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--c-700);
+  margin: 8px 0 4px;
+}
+.eval-total small { font-size: .75rem; font-weight: 400; color: var(--gray-400); display: block; }
+
+/* ═══════════════════════════════════════════════
+   VIEW 4 — RESUMEN / PROGRESO
+═══════════════════════════════════════════════ */
+.progress-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 140px;
+  margin-bottom: 8px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.bar-fill {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  transition: height .5s ease;
+  min-height: 4px;
+  background: var(--c-500);
+}
+.bar-fill.best { background: var(--c-700); }
+.bar-label { font-size: .65rem; color: var(--gray-400); font-weight: 600; }
+.bar-score { font-size: .72rem; color: var(--c-700); font-weight: 700; }
+.progress-chart-axis {
+  border-top: 1px solid var(--gray-100);
+  font-size: .65rem;
+  color: var(--gray-400);
+  text-align: right;
+  padding-top: 4px;
+  margin-bottom: 16px;
+}
+
+.criteria-table { width: 100%; border-collapse: collapse; }
+.criteria-table th,
+.criteria-table td { text-align: left; padding: 8px 10px; font-size: .8rem; }
+.criteria-table th { color: var(--gray-400); font-weight: 600; border-bottom: 1px solid var(--gray-100); }
+.criteria-table td:first-child { font-weight: 500; }
+.criteria-table tr:nth-child(even) td { background: var(--gray-100); }
+.star-mini { color: var(--warn); font-size: .85rem; }
+.star-mini-empty { color: var(--gray-100); font-size: .85rem; }
+
+/* ── Completion banner ────────────────────────── */
+.completion-banner {
+  background: linear-gradient(135deg, var(--c-700), var(--c-900));
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  display: none;
+}
+.completion-banner.show { display: block; }
+.completion-banner h2 { font-size: 1.4rem; margin-bottom: 8px; }
+.completion-banner p  { opacity: .8; font-size: .85rem; }
+.big-score {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 12px 0 4px;
+}
+.big-score small { font-size: 1rem; opacity: .6; font-weight: 400; }
+
+/* ── Toast ───────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--black);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: .85rem;
+  transition: transform .3s ease;
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 600px) {
+  .eval-row { flex-direction: column; align-items: flex-start; }
+  .controls { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header fijo -->
+<header class="header">
+  <h1>🎤 Entrenador de Pitch — SaniSostenible 2.0</h1>
+  <p>Concurso I3M 2026-1 · Universidad Santo Tomás Tunja</p>
+  <div class="header-row">
+    <div class="ensayo-dots" id="ensayo-dots"></div>
+    <span class="score-badge" id="avg-badge">Promedio: —</span>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- Tabs de navegación -->
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="showTab('trainer')">🎙️ Ensayo</button>
+    <button class="tab-btn" onclick="showTab('qa')">❓ Q&amp;A Drill</button>
+    <button class="tab-btn" onclick="showTab('eval')">⭐ Evaluar</button>
+    <button class="tab-btn" onclick="showTab('resumen')">📊 Resumen</button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       VIEW 1: ENTRENADOR
+  ══════════════════════════════════════════ -->
+  <section class="view active" id="view-trainer">
+
+    <!-- Timer -->
+    <div class="card">
+      <div class="timer-ring">
+        <div class="ring-wrap">
+          <svg id="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+            <circle id="ring-track"    cx="60" cy="60" r="52"/>
+            <circle id="ring-progress" cx="60" cy="60" r="52"
+              stroke-dasharray="326.7"
+              stroke-dashoffset="326.7"/>
+          </svg>
+          <div class="ring-time">
+            <span class="elapsed" id="elapsed-time">0:00</span>
+            <span class="total-lbl">/ 5:00</span>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:.75rem;color:var(--gray-700);">Ensayo <strong id="current-ensayo-lbl">1</strong> de 7</div>
+        </div>
+      </div>
+
+      <!-- Secciones -->
+      <div class="sections-bar" id="sections-bar"></div>
+      <div class="sec-timer">
+        Sección: <strong id="sec-name-display">Gancho</strong> —
+        tiempo restante: <span id="sec-time-display">0:30</span>
+      </div>
+
+      <!-- Controles -->
+      <div class="controls">
+        <button class="btn btn-primary btn-full" id="btn-start" onclick="startTimer()">▶ Iniciar Ensayo</button>
+        <button class="btn btn-secondary" id="btn-pause" onclick="pauseTimer()" disabled>⏸</button>
+        <button class="btn btn-danger" id="btn-reset" onclick="resetTimer()">↺</button>
+      </div>
+    </div>
+
+    <!-- Script según sección activa -->
+    <div id="script-container"></div>
+
+    <!-- Frases clave -->
+    <div class="card">
+      <div class="card-title">💬 Frases Clave para Memorizar</div>
+      <div>
+        <span class="phrase-chip">"70% de sistemas rurales fallan"</span>
+        <span class="phrase-chip">"Democratizamos el conocimiento técnico"</span>
+        <span class="phrase-chip">"Residuos → Recursos"</span>
+        <span class="phrase-chip">"Como pueden ver aquí..."</span>
+        <span class="phrase-chip">"100% gratuito · Offline · Sin registro"</span>
+        <span class="phrase-chip">"Triple impacto: ambiental, económico, social"</span>
+        <span class="phrase-chip">"El saneamiento digno no debería depender de dónde vives"</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VIEW 2: Q&A DRILL
+  ══════════════════════════════════════════ -->
+  <section class="view" id="view-qa">
+    <div class="card qa-card">
+      <div class="card-title">❓ Simulación de Preguntas del Jurado</div>
+      <div class="qa-question" id="qa-q"></div>
+      <button class="btn btn-secondary" id="btn-reveal" onclick="revealAnswer()" style="margin-bottom:10px">
+        👁 Ver respuesta preparada
+      </button>
+      <div class="qa-answer" id="qa-a"></div>
+      <div class="qa-score-row">
+        <span>¿Qué tan seguro te sentiste?</span>
+        <div id="qa-stars" class="stars"></div>
+      </div>
+      <div class="qa-counter" id="qa-counter"></div>
+      <div class="qa-nav">
+        <button class="btn btn-secondary" onclick="prevQA()">← Anterior</button>
+        <button class="btn btn-primary" onclick="nextQA()">Siguiente →</button>
+        <button class="btn btn-warn" onclick="shuffleQA()" style="margin-left:auto">🔀 Mezclar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VIEW 3: EVALUACIÓN
+  ══════════════════════════════════════════ -->
+  <section class="view" id="view-eval">
+    <div class="card">
+      <div class="card-title">⭐ Autoevaluación — Ensayo <span id="eval-ensayo-num">1</span></div>
+      <p style="font-size:.8rem;color:var(--gray-700);margin-bottom:16px;">
+        Después de cada ensayo, evalúate en 5 dimensiones (1-5 estrellas).
+        El sistema guarda tu progreso automáticamente.
+      </p>
+      <div class="eval-form" id="eval-form"></div>
+      <div class="eval-total" id="eval-total">—<small>puntuación total</small></div>
+      <div class="controls" style="margin-top:8px">
+        <button class="btn btn-primary btn-full" onclick="saveEval()">💾 Guardar Evaluación</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VIEW 4: RESUMEN / PROGRESO
+  ══════════════════════════════════════════ -->
+  <section class="view" id="view-resumen">
+
+    <!-- Banner de completado -->
+    <div class="completion-banner" id="completion-banner">
+      <div style="font-size:2rem">🏆</div>
+      <h2>¡7 Ensayos Completados!</h2>
+      <p>Estás listo para el Concurso I3M 2026-1</p>
+      <div class="big-score" id="final-score">—<small>/25</small></div>
+      <p style="opacity:.6;font-size:.75rem">Puntuación promedio sobre 5 ensayos evaluados</p>
+    </div>
+
+    <!-- Gráfico de barras -->
+    <div class="card">
+      <div class="card-title">📈 Evolución de Puntuación (Ensayos 1-7)</div>
+      <div class="progress-chart" id="progress-chart"></div>
+      <div class="progress-chart-axis">Escala: 0–25 puntos</div>
+    </div>
+
+    <!-- Tabla detallada -->
+    <div class="card">
+      <div class="card-title">📋 Detalle por Criterio</div>
+      <table class="criteria-table" id="criteria-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>E1</th><th>E2</th><th>E3</th><th>E4</th><th>E5</th><th>E6</th><th>E7</th>
+          </tr>
+        </thead>
+        <tbody id="criteria-body"></tbody>
+      </table>
+    </div>
+
+    <!-- Botones de gestión -->
+    <div class="controls">
+      <button class="btn btn-warn btn-full" onclick="exportProgress()">📤 Exportar progreso (JSON)</button>
+      <button class="btn btn-danger" onclick="resetAll()">🗑 Reiniciar todo</button>
+    </div>
+  </section>
+
+</div><!-- .app -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  DATA — SECCIONES DEL PITCH
+// ═══════════════════════════════════════════════════
+const SECTIONS = [
+  {
+    id: 'gancho',
+    label: 'Gancho',
+    emoji: '🎯',
+    duration: 30,
+    color: '#C62828',
+    script: `<em>"Imaginen este escenario: una familia en una vereda de Boyacá invierte 12 millones de pesos en un sistema de saneamiento. 5 años después, ese sistema colapsa. El agua de su pozo está contaminada. Sus hijos enfermaron."</em>
+    <br><br>
+    <em>"Esto no es un caso aislado. <strong>En Colombia, el 70% de los sistemas de saneamiento rural fallan en los primeros 5 años.</strong> No por mala construcción. Por falta de mantenimiento y desconocimiento."</em>
+    <br><br>
+    <em>"Nosotros creemos que ese conocimiento técnico debe ser accesible para todos. Hoy les presentamos SaniSostenible 2.0."</em>`,
+    tips: [
+      '<strong>Pausa dramática</strong> después de "Sus hijos enfermaron." (1-2 segundos)',
+      'Hablar despacio en la estadística del <strong>70%</strong>',
+      'Contacto visual con los jurados al decir "Nosotros creemos"'
+    ]
+  },
+  {
+    id: 'solucion',
+    label: 'Solución',
+    emoji: '💡',
+    duration: 60,
+    color: '#0277BD',
+    script: `<em>"Desarrollamos SaniSostenible 2.0: un asistente técnico virtual que <strong>democratiza el conocimiento especializado de saneamiento</strong> y transforma residuos en recursos mediante economía circular."</em>
+    <br><br>
+    <em>"¿Cómo lo hace? Tiene dos módulos que trabajan juntos:"</em>
+    <br><br>
+    <em>"El primero es el <strong>Manual Interactivo de Acceso Libre</strong>: guías visuales paso a paso, un diagnóstico rápido con sistema de semáforo —verde, amarillo, rojo— y alertas inteligentes basadas en mediciones. Cualquier familia rural puede usarlo, sin internet, desde un smartphone básico."</em>
+    <br><br>
+    <em>"El segundo es el módulo <strong>Eco-Compost</strong>: convertimos los lodos extraídos del tanque séptico —que normalmente son un problema de disposición— en compost orgánico de valor. Cero residuos. Economía circular aplicada al saneamiento."</em>`,
+    tips: [
+      'Mostrar el prototipo abierto mientras habla de los módulos',
+      '<strong>Señalar visualmente</strong> cada módulo al mencionarlo',
+      'Énfasis en <strong>"sin internet"</strong> y <strong>"smartphone básico"</strong>'
+    ]
+  },
+  {
+    id: 'demo',
+    label: 'Demo',
+    emoji: '📱',
+    duration: 120,
+    color: '#1B5E20',
+    script: `<em>"Como pueden ver aquí..."</em> [abrir prototipo]
+    <br><br>
+    <em>"Inicio en la pantalla principal. Tenemos acceso rápido a todos los módulos. Voy a mostrarles el flujo de diagnóstico."</em> [tocar 🔍 Diagnóstico]
+    <br><br>
+    <em>"El usuario selecciona qué quiere revisar —en este caso, el tanque séptico."</em> [tocar Tanque Séptico]
+    <br><br>
+    <em>"La app hace tres preguntas simples con ilustraciones. Sin tecnicismos."</em> [navegar preguntas 1, 2, 3]
+    <br><br>
+    <em>"Y aquí está la magia: basado en las respuestas, el sistema clasifica automáticamente y le dice exactamente qué hacer."</em> [mostrar resultado rojo]
+    <br><br>
+    <em>"¿Ven el botón de WhatsApp? Con un toque, el usuario conecta directamente con un técnico certificado de RISC."</em>
+    <br><br>
+    <em>"Ahora, el módulo Eco-Compost."</em> [navegar a 🌱 Eco-Compost]
+    <br><br>
+    <em>"Aquí le preguntamos sobre la seguridad del lodo y generamos un protocolo personalizado de compostaje, con un calendario interactivo de 12 semanas."</em>
+    <br><br>
+    <em>"Y todo esto... es completamente gratuito."</em>`,
+    tips: [
+      '<strong>Practicar la navegación del prototipo</strong> mínimo 20 veces',
+      'Tener el link de Figma en favoritos y probado ese día',
+      '<strong>Plan B</strong>: capturas de pantalla en PowerPoint si Figma falla',
+      'Hablar lento durante la demo — el jurado necesita procesar'
+    ]
+  },
+  {
+    id: 'impacto',
+    label: 'Impacto',
+    emoji: '📊',
+    duration: 60,
+    color: '#F9A825',
+    script: `<em>"El valor de SaniSostenible 2.0 es triple:"</em>
+    <br><br>
+    <em>"<strong>Ambiental</strong>: reducción directa de la contaminación de acuíferos, y la transformación de residuos en compost —un subproducto con valor real para el suelo."</em>
+    <br><br>
+    <em>"<strong>Económico</strong>: cada familia rural que produce compost puede generar entre 120.000 y 180.000 pesos al año en abono, además de evitar reparaciones que cuestan hasta 15 millones de pesos."</em>
+    <br><br>
+    <em>"<strong>Social</strong>: el conocimiento técnico deja de ser exclusivo de los ingenieros. Cualquier campesino con un smartphone puede operar su sistema correctamente."</em>
+    <br><br>
+    <em>"Estamos alineados con el <strong>ODS 6</strong>, con la <strong>Resolución 330 de 2017</strong> del Ministerio de Vivienda, y con el Plan Nacional de Desarrollo. No somos una idea en el aire —somos una solución con base técnica, normativa y social."</em>
+    <br><br>
+    <em>"Nuestra meta en el primer año: <strong>200 familias</strong>, <strong>500 kg de compost</strong>, y reducción de ETAs en esas comunidades en un <strong>15%</strong>."</em>`,
+    tips: [
+      'Mostrar el Slide 4 (Triple Impacto) mientras habla',
+      'Gesticular los <strong>3 números</strong>: 200 familias, 500 kg, 15%',
+      'Voz firme al citar normativa: ODS 6 y Resolución 330/2017'
+    ]
+  },
+  {
+    id: 'cierre',
+    label: 'Cierre',
+    emoji: '🚀',
+    duration: 30,
+    color: '#4CAF50',
+    script: `<em>"Hoy les mostramos un prototipo. Pero detrás de este prototipo hay una PWA funcional, APIs reales en producción, y un equipo de RISC Ingeniería S.A.S que lleva 10 años trabajando en el saneamiento rural colombiano."</em>
+    <br><br>
+    <em>"La visión es clara: pasar de este prototipo a una solución validada en campo en Boyacá, luego escalar a nivel nacional, y que en 5 años, el saneamiento rural en Colombia ya no sea el colapso silencioso que describimos al principio."</em>
+    <br><br>
+    <em>"Porque el acceso al saneamiento digno no debería depender de cuánto dinero tienes ni de si vives en la ciudad o en una vereda."</em>
+    <br><br>
+    <em>"Somos SaniSostenible 2.0. <strong>Gracias.</strong>"</em>`,
+    tips: [
+      '<strong>Terminar en silencio breve</strong> antes de ceder la palabra',
+      'Mantener contacto visual con todo el jurado al decir "Gracias"',
+      'NO agregar información extra después del cierre'
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════
+//  DATA — Q&A
+// ═══════════════════════════════════════════════════
+const QA_DATA = [
+  {
+    q: '¿Por qué una PWA y no una app nativa?',
+    a: 'Una PWA no requiere descargar desde Play Store ni App Store. El usuario rural puede acceder directamente desde su navegador Chrome y agregarla a la pantalla de inicio. Además funciona offline, lo cual es crítico en zonas sin conectividad permanente.'
+  },
+  {
+    q: '¿Cómo garantizan la seguridad del compost?',
+    a: 'Seguimos la Resolución 1287 de 2014 del MADS que regula los biosólidos en Colombia. El módulo clasifica el riesgo antes de iniciar el proceso y solo recomienda el compostaje directo para lodos de bajo riesgo verificado.'
+  },
+  {
+    q: '¿Cuál es el modelo de negocio?',
+    a: 'Doble pilar: el módulo gratuito para usuarios finales genera adopción masiva, y un módulo Pro para empresas de mantenimiento como RISC que pagan por herramientas avanzadas. El pilar Pro financia el acceso libre del pilar social.'
+  },
+  {
+    q: '¿Han validado esto con usuarios reales?',
+    a: 'La app base de RISC Ingeniería S.A.S está en producción y ha sido usada por clientes reales. El módulo Eco-Compost es nuevo y está planificado para validación en campo en el segundo semestre de 2026, con comunidades de Boyacá.'
+  },
+  {
+    q: '¿Cómo escalan esto a nivel nacional?',
+    a: 'Mediante alianzas con operadores locales certificados en cada municipio, que usan el módulo Pro para gestionar sus servicios. RISC actúa como franquicia tecnológica y los operadores locales llevan el servicio físico.'
+  },
+  {
+    q: '¿Por qué .NET y no otra tecnología?',
+    a: '.NET 8 es la tecnología más reciente de Microsoft, con soporte hasta 2030. La arquitectura de API REST + SPA Vanilla JS garantiza máxima compatibilidad, incluso con navegadores móviles básicos de gama baja.'
+  },
+  {
+    q: '¿Cómo financian el desarrollo completo?',
+    a: 'El modelo Pro genera ingresos desde el primer contrato con operadores de mantenimiento. Además exploramos fondos Colciencias/MinCiencias para la validación en campo. El desarrollo técnico base ya existe —lo que se requiere es financiación para el diseño final y la escala.'
+  }
+];
+
+// ═══════════════════════════════════════════════════
+//  DATA — CRITERIOS DE EVALUACIÓN
+// ═══════════════════════════════════════════════════
+const CRITERIA = [
+  { id: 'tempo',     label: 'Tempo y Fluidez',    desc: '¿Mantuviste el ritmo? ¿Sin pausas largas?' },
+  { id: 'voz',      label: 'Voz y Proyección',    desc: '¿Tono claro, volumen adecuado, énfasis correcto?' },
+  { id: 'contenido',label: 'Contenido Completo',  desc: '¿Cubriste todas las secciones sin olvidar puntos?' },
+  { id: 'demo',     label: 'Demo del Prototipo',  desc: '¿Fue fluida la navegación? ¿Sin tropiezos?' },
+  { id: 'confianza',label: 'Confianza y Presencia',desc: '¿Contacto visual, lenguaje corporal, seguridad?' }
+];
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+let timerInterval = null;
+let elapsedSec    = 0;
+let running       = false;
+let curSecIdx     = 0;
+let secElapsed    = 0;
+
+// localStorage key
+const LS_KEY = 'sanipitch_v2';
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY)) || { evals: [], currentEnsayo: 1 }; }
+  catch { return { evals: [], currentEnsayo: 1 }; }
+}
+function saveState(st) { localStorage.setItem(LS_KEY, JSON.stringify(st)); }
+
+let STATE = loadState();
+
+// Q&A state
+let qaList  = [...QA_DATA];
+let qaIndex = 0;
+let qaScores = {};
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+function init() {
+  buildEnsayoDots();
+  buildSectionsBar();
+  buildScript();
+  buildEvalForm();
+  buildQA();
+  refreshResumen();
+  updateEvalHeader();
+}
+
+// ═══════════════════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════════════════
+function showTab(tab) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`view-${tab}`).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if (tab === 'resumen') refreshResumen();
+}
+
+// ═══════════════════════════════════════════════════
+//  ENSAYO DOTS
+// ═══════════════════════════════════════════════════
+function buildEnsayoDots() {
+  const container = document.getElementById('ensayo-dots');
+  container.innerHTML = '';
+  for (let i = 1; i <= 7; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.textContent = i;
+    const hasEval = STATE.evals.find(e => e.ensayo === i);
+    if (i < STATE.currentEnsayo || hasEval) d.classList.add('done');
+    if (i === STATE.currentEnsayo)          d.classList.add('active');
+    container.appendChild(d);
+  }
+  // promedio
+  const scores = STATE.evals.map(e => e.total);
+  const avg = scores.length ? (scores.reduce((a,b) => a+b,0) / scores.length).toFixed(1) : '—';
+  document.getElementById('avg-badge').textContent = `Promedio: ${avg}${scores.length ? '/25' : ''}`;
+  document.getElementById('current-ensayo-lbl').textContent = STATE.currentEnsayo;
+}
+
+// ═══════════════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════════════
+function buildSectionsBar() {
+  const bar = document.getElementById('sections-bar');
+  bar.innerHTML = '';
+  SECTIONS.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sec-chip' + (i === curSecIdx ? ' active' : '');
+    btn.innerHTML = `${s.emoji}<br>${s.label}<br><span style="font-weight:400">${formatSec(s.duration)}</span>`;
+    btn.onclick = () => { if (!running) jumpToSection(i); };
+    bar.appendChild(btn);
+  });
+}
+
+function jumpToSection(idx) {
+  curSecIdx  = idx;
+  secElapsed = 0;
+  elapsedSec = SECTIONS.slice(0, idx).reduce((a, s) => a + s.duration, 0);
+  updateDisplay();
+  buildScript();
+}
+
+function startTimer() {
+  if (running) return;
+  running = true;
+  document.getElementById('btn-start').disabled = true;
+  document.getElementById('btn-pause').disabled = false;
+  timerInterval = setInterval(tick, 1000);
+}
+
+function pauseTimer() {
+  if (!running) return;
+  running = false;
+  clearInterval(timerInterval);
+  document.getElementById('btn-start').disabled = false;
+  document.getElementById('btn-pause').disabled = true;
+}
+
+function resetTimer() {
+  pauseTimer();
+  elapsedSec = 0;
+  curSecIdx  = 0;
+  secElapsed = 0;
+  document.getElementById('btn-start').disabled = false;
+  document.getElementById('btn-pause').disabled = true;
+  updateDisplay();
+  buildScript();
+  buildSectionsBar();
+}
+
+function tick() {
+  elapsedSec++;
+  secElapsed++;
+
+  const curSec = SECTIONS[curSecIdx];
+  if (secElapsed >= curSec.duration) {
+    // Avanzar a siguiente sección
+    if (curSecIdx < SECTIONS.length - 1) {
+      curSecIdx++;
+      secElapsed = 0;
+      buildScript();
+    } else {
+      // Pitch terminado
+      clearInterval(timerInterval);
+      running = false;
+      document.getElementById('btn-start').disabled = false;
+      document.getElementById('btn-pause').disabled = true;
+      onPitchComplete();
+    }
+  }
+  updateDisplay();
+  updateSectionsBar();
+}
+
+const TOTAL_SECS = SECTIONS.reduce((a, s) => a + s.duration, 0); // 300
+
+function updateDisplay() {
+  // Reloj principal
+  document.getElementById('elapsed-time').textContent = formatSec(elapsedSec);
+
+  // Ring
+  const circumference = 326.7;
+  const progress = Math.min(elapsedSec / TOTAL_SECS, 1);
+  const offset   = circumference * (1 - progress);
+  const ring     = document.getElementById('ring-progress');
+  ring.style.strokeDashoffset = offset;
+  // Color: verde → amarillo → rojo
+  if (elapsedSec > TOTAL_SECS)        ring.style.stroke = '#C62828';
+  else if (elapsedSec > TOTAL_SECS * .85) ring.style.stroke = '#F9A825';
+  else                                    ring.style.stroke = '#4CAF50';
+
+  // Sección restante
+  const curSec    = SECTIONS[curSecIdx];
+  const remaining = curSec.duration - secElapsed;
+  const secDisp   = document.getElementById('sec-time-display');
+  secDisp.textContent = formatSec(Math.max(0, remaining));
+  secDisp.className   = remaining <= 5 ? 'over' : remaining <= 10 ? 'warn' : '';
+  document.getElementById('sec-name-display').textContent = `${curSec.emoji} ${curSec.label}`;
+}
+
+function updateSectionsBar() {
+  const chips = document.querySelectorAll('#sections-bar .sec-chip');
+  chips.forEach((c, i) => {
+    c.className = 'sec-chip';
+    if (i < curSecIdx)    c.classList.add('done');
+    if (i === curSecIdx)  c.classList.add('active');
+  });
+}
+
+function formatSec(s) {
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${String(r).padStart(2,'0')}`;
+}
+
+function onPitchComplete() {
+  showToast('✅ ¡Pitch completo! Ve a la pestaña Evaluar para registrar tu puntuación.');
+  // Avanzar contador si no está ya evaluado
+  showTab_direct('eval');
+}
+function showTab_direct(tab) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`view-${tab}`).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.getAttribute('onclick')?.includes(tab)) b.classList.add('active');
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  SCRIPT VIEWER
+// ═══════════════════════════════════════════════════
+function buildScript() {
+  const s   = SECTIONS[curSecIdx];
+  const container = document.getElementById('script-container');
+  container.innerHTML = `
+    <div class="card">
+      <div class="card-title" style="color:${s.color}">${s.emoji} ${s.label.toUpperCase()} (${formatSec(s.duration)} seg)</div>
+      <div class="script-block">
+        <blockquote>${s.script}</blockquote>
+      </div>
+      <div class="tips-block" style="margin-top:12px">
+        <strong>💡 Tips de entrega:</strong>
+        <ul style="margin-top:6px;padding-left:18px">
+          ${s.tips.map(t => `<li style="margin-bottom:4px">${t}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════
+//  Q&A DRILL
+// ═══════════════════════════════════════════════════
+function buildQA() {
+  renderQA();
+  buildQAStars();
+}
+
+function renderQA() {
+  const item = qaList[qaIndex];
+  document.getElementById('qa-q').textContent = item.q;
+  const aEl = document.getElementById('qa-a');
+  aEl.textContent = item.a;
+  aEl.classList.remove('show');
+  document.getElementById('btn-reveal').style.display = 'block';
+  document.getElementById('qa-counter').textContent = `Pregunta ${qaIndex + 1} de ${qaList.length}`;
+  // Restaurar estrellas
+  const score = qaScores[qaIndex] || 0;
+  document.querySelectorAll('#qa-stars .star-btn').forEach((s, i) => {
+    s.classList.toggle('on', i < score);
+  });
+}
+
+function buildQAStars() {
+  const c = document.getElementById('qa-stars');
+  c.innerHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const b = document.createElement('button');
+    b.className = 'star-btn';
+    b.textContent = '★';
+    b.dataset.val = i;
+    b.onclick = () => {
+      qaScores[qaIndex] = i;
+      document.querySelectorAll('#qa-stars .star-btn').forEach((s, idx) => s.classList.toggle('on', idx < i));
+    };
+    c.appendChild(b);
+  }
+}
+
+function revealAnswer() {
+  document.getElementById('qa-a').classList.add('show');
+  document.getElementById('btn-reveal').style.display = 'none';
+}
+
+function nextQA() {
+  qaIndex = (qaIndex + 1) % qaList.length;
+  renderQA();
+}
+function prevQA() {
+  qaIndex = (qaIndex - 1 + qaList.length) % qaList.length;
+  renderQA();
+}
+function shuffleQA() {
+  for (let i = qaList.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [qaList[i], qaList[j]] = [qaList[j], qaList[i]];
+  }
+  qaIndex = 0;
+  qaScores = {};
+  renderQA();
+  showToast('🔀 Preguntas mezcladas');
+}
+
+// ═══════════════════════════════════════════════════
+//  EVALUACIÓN
+// ═══════════════════════════════════════════════════
+function updateEvalHeader() {
+  document.getElementById('eval-ensayo-num').textContent = STATE.currentEnsayo;
+}
+
+function buildEvalForm() {
+  const form = document.getElementById('eval-form');
+  form.innerHTML = '';
+  CRITERIA.forEach(cr => {
+    const row = document.createElement('div');
+    row.className = 'eval-row';
+    const starsHTML = Array.from({length:5}, (_, i) =>
+      `<button class="star-btn" data-crit="${cr.id}" data-val="${i+1}" onclick="setEvalStar('${cr.id}',${i+1})">★</button>`
+    ).join('');
+    row.innerHTML = `
+      <div class="eval-label">${cr.label}<span>${cr.desc}</span></div>
+      <div class="stars" id="stars-${cr.id}">${starsHTML}</div>
+    `;
+    form.appendChild(row);
+  });
+  updateEvalTotal();
+}
+
+function setEvalStar(critId, val) {
+  const stars = document.querySelectorAll(`#stars-${critId} .star-btn`);
+  stars.forEach((s, i) => s.classList.toggle('on', i < val));
+  s_data[critId] = val;
+  updateEvalTotal();
+}
+
+const s_data = {};
+function updateEvalTotal() {
+  const total = CRITERIA.reduce((sum, cr) => sum + (s_data[cr.id] || 0), 0);
+  const el    = document.getElementById('eval-total');
+  el.innerHTML = `${total}<small>/ ${CRITERIA.length * 5} puntos totales</small>`;
+}
+
+function getEvalScores() {
+  return CRITERIA.reduce((obj, cr) => { obj[cr.id] = s_data[cr.id] || 0; return obj; }, {});
+}
+
+function saveEval() {
+  const scores = getEvalScores();
+  const total  = Object.values(scores).reduce((a,b)=>a+b, 0);
+  if (total === 0) { showToast('⚠️ Califica al menos un criterio antes de guardar'); return; }
+
+  const ensayo = STATE.currentEnsayo;
+  // Reemplazar si ya existe
+  STATE.evals = STATE.evals.filter(e => e.ensayo !== ensayo);
+  STATE.evals.push({ ensayo, scores, total, date: new Date().toISOString() });
+  STATE.evals.sort((a,b) => a.ensayo - b.ensayo);
+
+  if (ensayo < 7) STATE.currentEnsayo = ensayo + 1;
+  saveState(STATE);
+  buildEnsayoDots();
+  updateEvalHeader();
+  showToast(`✅ Ensayo ${ensayo} guardado — Puntuación: ${total}/25`);
+  // Resetear form
+  CRITERIA.forEach(cr => delete s_data[cr.id]);
+  buildEvalForm();
+  refreshResumen();
+}
+
+// ═══════════════════════════════════════════════════
+//  RESUMEN
+// ═══════════════════════════════════════════════════
+function refreshResumen() {
+  buildProgressChart();
+  buildCriteriaTable();
+  updateCompletionBanner();
+}
+
+function buildProgressChart() {
+  const chart   = document.getElementById('progress-chart');
+  chart.innerHTML = '';
+  const maxScore = CRITERIA.length * 5;
+  const best     = Math.max(...STATE.evals.map(e => e.total), 0);
+
+  for (let i = 1; i <= 7; i++) {
+    const eval_ = STATE.evals.find(e => e.ensayo === i);
+    const col   = document.createElement('div');
+    col.className = 'bar-col';
+    const score  = eval_ ? eval_.total : null;
+    const height = score ? Math.round((score / maxScore) * 120) : 0;
+    const isBest = score === best && score > 0;
+    col.innerHTML = `
+      <div class="bar-score">${score !== null ? score : ''}</div>
+      <div class="bar-fill${isBest ? ' best' : ''}" style="height:${height}px;"></div>
+      <div class="bar-label">E${i}</div>
+    `;
+    chart.appendChild(col);
+  }
+}
+
+function buildCriteriaTable() {
+  const tbody = document.getElementById('criteria-body');
+  tbody.innerHTML = '';
+  CRITERIA.forEach(cr => {
+    const tr = document.createElement('tr');
+    let cells = `<td>${cr.label}</td>`;
+    for (let i = 1; i <= 7; i++) {
+      const e = STATE.evals.find(ev => ev.ensayo === i);
+      const v = e ? (e.scores[cr.id] || 0) : null;
+      cells += `<td>${v !== null ? renderMiniStars(v) : '<span style="color:#e0e0e0">—</span>'}</td>`;
+    }
+    tr.innerHTML = cells;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderMiniStars(n) {
+  let s = '';
+  for (let i = 0; i < 5; i++) s += `<span class="${i < n ? 'star-mini' : 'star-mini-empty'}">★</span>`;
+  return s;
+}
+
+function updateCompletionBanner() {
+  const banner = document.getElementById('completion-banner');
+  if (STATE.evals.length >= 7) {
+    banner.classList.add('show');
+    const avg = STATE.evals.reduce((s,e)=>s+e.total,0) / STATE.evals.length;
+    document.getElementById('final-score').innerHTML = `${avg.toFixed(1)}<small>/25</small>`;
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  UTILITIES
+// ═══════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+function exportProgress() {
+  const data  = JSON.stringify(STATE, null, 2);
+  const blob  = new Blob([data], { type: 'application/json' });
+  const url   = URL.createObjectURL(blob);
+  const a     = document.createElement('a');
+  a.href      = url;
+  a.download  = `sanipitch-progreso-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAll() {
+  if (!confirm('¿Seguro que deseas borrar todos los ensayos guardados?')) return;
+  STATE = { evals: [], currentEnsayo: 1 };
+  saveState(STATE);
+  CRITERIA.forEach(cr => delete s_data[cr.id]);
+  buildEnsayoDots();
+  buildEvalForm();
+  updateEvalHeader();
+  refreshResumen();
+  showToast('🗑 Progreso reiniciado');
+}
+
+// ═══════════════════════════════════════════════════
+//  BOOT
+// ═══════════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>

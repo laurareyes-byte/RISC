@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaniSostenible 2.0 — Documentación Complementaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   SCREEN STYLES (preview)
+═══════════════════════════════════════════════ */
+:root {
+  --green-900: #1B5E20;
+  --green-700: #2E7D32;
+  --green-500: #4CAF50;
+  --green-100: #C8E6C9;
+  --green-50:  #E8F5E9;
+  --blue:      #0277BD;
+  --amber:     #F9A825;
+  --gray-800:  #212121;
+  --gray-600:  #616161;
+  --gray-300:  #9E9E9E;
+  --gray-100:  #F5F5F5;
+  --white:     #FFFFFF;
+  --ff:        'Poppins', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body {
+  font-family: var(--ff);
+  background: #e0e0e0;
+  padding: 20px;
+}
+
+/* ── Print button (screen only) ─────────────── */
+.print-btn-wrap {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.print-btn {
+  background: var(--green-700);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-family: var(--ff);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.print-btn:hover { background: var(--green-900); }
+.print-hint {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+  font-family: var(--ff);
+}
+
+/* ═══════════════════════════════════════════════
+   A4 PAGE
+═══════════════════════════════════════════════ */
+.a4-page {
+  background: white;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 20px;
+  padding: 14mm 16mm 12mm;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Accent bar top ─────────────────────────── */
+.a4-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--green-900), var(--green-500));
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════ */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid var(--green-100);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.doc-header-left h1 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green-900);
+  line-height: 1.2;
+}
+.doc-header-left p {
+  font-size: 10px;
+  color: var(--gray-600);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+.doc-header-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.logo-box {
+  background: var(--green-900);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+.doc-header-right small {
+  display: block;
+  font-size: 8.5px;
+  color: var(--gray-300);
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION TITLES
+═══════════════════════════════════════════════ */
+.sec-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--green-700);
+  border-left: 3px solid var(--green-500);
+  padding-left: 7px;
+  margin-bottom: 7px;
+  margin-top: 14px;
+}
+.sec-title:first-of-type { margin-top: 0; }
+
+/* ═══════════════════════════════════════════════
+   TWO-COLUMN LAYOUT
+═══════════════════════════════════════════════ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 0;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   PROBLEM HIGHLIGHT BOX
+═══════════════════════════════════════════════ */
+.problem-box {
+  background: #FFEBEE;
+  border-left: 4px solid #C62828;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.problem-box .stat {
+  font-size: 28px;
+  font-weight: 700;
+  color: #C62828;
+  line-height: 1;
+}
+.problem-box .stat-label {
+  font-size: 10px;
+  color: #B71C1C;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.problem-box p {
+  font-size: 9px;
+  color: #333;
+  line-height: 1.5;
+}
+.problem-list {
+  margin-top: 6px;
+  padding-left: 0;
+  list-style: none;
+}
+.problem-list li {
+  font-size: 9px;
+  color: #333;
+  padding: 2px 0;
+  padding-left: 14px;
+  position: relative;
+}
+.problem-list li::before { content: '•'; position: absolute; left: 3px; color: #C62828; }
+
+/* ═══════════════════════════════════════════════
+   SOLUTION BOX
+═══════════════════════════════════════════════ */
+.solution-box {
+  background: var(--green-50);
+  border-left: 4px solid var(--green-500);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 12px;
+  font-size: 9px;
+  line-height: 1.6;
+  color: var(--gray-800);
+}
+.solution-box strong { color: var(--green-700); }
+
+/* ── Módulo chips ────────────────────────────── */
+.module-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--green-700);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 8.5px;
+  font-weight: 600;
+  margin: 3px 3px 3px 0;
+}
+.module-chip.eco { background: #0277BD; }
+
+/* ═══════════════════════════════════════════════
+   METHODOLOGY — DESIGN THINKING
+═══════════════════════════════════════════════ */
+.dt-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 8px 0;
+}
+.dt-step {
+  flex: 1;
+  text-align: center;
+  padding: 5px 2px;
+  font-size: 8px;
+  font-weight: 600;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+}
+.dt-step::after {
+  content: '›';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--gray-300);
+  z-index: 1;
+}
+.dt-step:last-child::after { display: none; }
+.dt-step span { display: block; font-size: 12px; }
+.dt-1 { background: #1565C0; }
+.dt-2 { background: #6A1B9A; }
+.dt-3 { background: #E65100; }
+.dt-4 { background: var(--green-700); }
+.dt-5 { background: #00695C; }
+
+/* ── Tech decisions ──────────────────────────── */
+.tech-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.tech-row:last-child { border-bottom: none; }
+.tech-tag {
+  flex-shrink: 0;
+  background: var(--green-900);
+  color: white;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-top: 1px;
+}
+.tech-row p { font-size: 9px; color: var(--gray-600); line-height: 1.5; }
+.tech-row p strong { color: var(--gray-800); }
+
+/* ═══════════════════════════════════════════════
+   PAGE 2 — FLOW DIAGRAMS
+═══════════════════════════════════════════════ */
+.flow-diagram {
+  background: var(--gray-100);
+  border-radius: 8px;
+  padding: 10px;
+}
+.flow-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--green-700);
+  margin-bottom: 8px;
+  text-align: center;
+}
+.flow-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+.flow-node {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 8.5px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 130px;
+}
+.flow-arrow {
+  font-size: 12px;
+  color: var(--gray-300);
+  line-height: 1;
+}
+.fn-start    { background: var(--green-700); color: white; }
+.fn-step     { background: white; color: var(--gray-800); border: 1px solid var(--green-100); }
+.fn-result-g { background: var(--green-100); color: var(--green-900); border: 1px solid var(--green-500); }
+.fn-result-y { background: #FFF8E1; color: #7B6000; border: 1px solid var(--amber); }
+.fn-result-r { background: #FFEBEE; color: #B71C1C; border: 1px solid #EF5350; }
+.fn-eco      { background: #E1F5FE; color: #01579B; border: 1px solid #29B6F6; }
+
+/* ── Value model ─────────────────────────────── */
+.value-col {
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+.value-col.free { background: var(--green-50); border: 1.5px solid var(--green-500); }
+.value-col.pro  { background: #EDE7F6; border: 1.5px solid #7B1FA2; }
+.value-col h3 {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.value-col.free h3 { color: var(--green-700); }
+.value-col.pro  h3 { color: #7B1FA2; }
+.value-col ul {
+  list-style: none;
+  padding: 0;
+}
+.value-col ul li {
+  font-size: 8.5px;
+  color: var(--gray-600);
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.value-col ul li:last-child { border-bottom: none; }
+.value-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 8px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.value-col.free .value-pill { background: var(--green-700); color: white; }
+.value-col.pro  .value-pill { background: #7B1FA2; color: white; }
+
+/* ── Impact metrics ──────────────────────────── */
+.impact-card {
+  text-align: center;
+  background: white;
+  border: 1.5px solid var(--green-100);
+  border-radius: 8px;
+  padding: 10px 8px;
+}
+.impact-card .num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-700);
+  line-height: 1;
+}
+.impact-card .unit {
+  font-size: 8px;
+  color: var(--gray-300);
+  display: block;
+  margin-bottom: 4px;
+}
+.impact-card .desc {
+  font-size: 8.5px;
+  color: var(--gray-600);
+  line-height: 1.4;
+}
+
+/* ── Roadmap ──────────────────────────────────── */
+.roadmap {
+  display: flex;
+  gap: 0;
+  position: relative;
+  margin: 8px 0;
+}
+.roadmap::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--green-100);
+  z-index: 0;
+}
+.rm-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.rm-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: white;
+}
+.rm-dot.done   { background: var(--green-700); }
+.rm-dot.active { background: var(--amber); }
+.rm-dot.future { background: var(--gray-300); }
+.rm-step p {
+  font-size: 8px;
+  color: var(--gray-600);
+  line-height: 1.3;
+}
+.rm-step strong { font-size: 8.5px; color: var(--gray-800); display: block; }
+
+/* ── Normativa chips ─────────────────────────── */
+.norm-chip {
+  display: inline-block;
+  background: var(--gray-100);
+  border: 1px solid var(--green-100);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 8px;
+  color: var(--green-900);
+  font-weight: 600;
+  margin: 2px;
+}
+
+/* ── Footer ──────────────────────────────────── */
+.doc-footer {
+  position: absolute;
+  bottom: 8mm;
+  left: 16mm;
+  right: 16mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--gray-100);
+  padding-top: 5px;
+  font-size: 7.5px;
+  color: var(--gray-300);
+}
+.doc-footer strong { color: var(--green-700); }
+
+/* ─── ODS badge ─────────────────────────────── */
+.ods-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #0277BD;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 8.5px;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT STYLES
+═══════════════════════════════════════════════ */
+@media print {
+  @page { size: A4; margin: 0; }
+
+  body { background: white; padding: 0; }
+  .print-btn-wrap { display: none !important; }
+
+  .a4-page {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+    page-break-after: always;
+    padding: 14mm 16mm 18mm;
+  }
+  .a4-page:last-child { page-break-after: avoid; }
+
+  /* Evitar salto de página en secciones */
+  .two-col, .three-col, .flow-diagram,
+  .value-col, .roadmap { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-btn-wrap">
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+  <div class="print-hint">Chrome/Edge: selecciona "Guardar como PDF" en la impresora → Activar "Gráficos de fondo" para colores</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PÁGINA 1
+══════════════════════════════════════════════════ -->
+<div class="a4-page" id="page1">
+
+  <!-- Header -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>SaniSostenible 2.0<br>Documentación Complementaria</h1>
+      <p>Concurso I3M 2026-1 · Universidad Santo Tomás Tunja<br>
+         DMBB — Diseño de Medios y Bienestar Biótico</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="logo-box">RISC<br>INGENIERÍA</div>
+      <small>21 de Abril, 2026</small>
+    </div>
+  </div>
+
+  <!-- EL PROBLEMA -->
+  <div class="sec-title">1. El Problema — Saneamiento Rural en Colombia</div>
+  <div class="two-col">
+    <div class="problem-box">
+      <div class="stat">70%</div>
+      <div class="stat-label">de sistemas de saneamiento rural fallan prematuramente</div>
+      <p>Según datos del sector, en Colombia la mayoría de sistemas individuales de tratamiento de aguas residuales en zonas rurales colapsan antes de los 5 años. No por mala construcción, sino por falta de mantenimiento informado y acceso a conocimiento técnico.</p>
+      <ul class="problem-list">
+        <li>Contaminación directa de acuíferos y fuentes superficiales</li>
+        <li>Enfermedades de transmisión hídrica (ETAs) en comunidades</li>
+        <li>Pérdida de inversión familiar: hasta $15 M COP en reparaciones</li>
+        <li>Disposición inadecuada de lodos y biosólidos</li>
+      </ul>
+    </div>
+    <div>
+      <div class="solution-box">
+        <strong>💡 Nuestra solución:</strong> SaniSostenible 2.0 es un <strong>asistente técnico virtual</strong> que democratiza el conocimiento especializado de saneamiento y transforma residuos en recursos mediante economía circular.
+        <br><br>
+        <div>
+          <span class="module-chip">🔍 Manual Interactivo</span>
+          <span class="module-chip eco">🌱 Eco-Compost</span>
+        </div>
+        <br>
+        Accesible desde <strong>cualquier smartphone básico</strong>, funciona <strong>100% offline</strong> como PWA instalable, y es <strong>completamente gratuito</strong> para los usuarios finales.
+        <br><br>
+        <span class="ods-badge">🌊 ODS 6</span>
+        <span class="norm-chip">Res. 330/2017 MVCT</span>
+        <span class="norm-chip">Dec. 1287/2014 MADS</span>
+        <span class="norm-chip">PND 2022–2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- METODOLOGÍA -->
+  <div class="sec-title">2. Metodología de Diseño UX — Design Thinking + Mobile-First</div>
+
+  <div class="dt-flow">
+    <div class="dt-step dt-1"><span>🤝</span>Empatizar</div>
+    <div class="dt-step dt-2"><span>🎯</span>Definir</div>
+    <div class="dt-step dt-3"><span>💡</span>Idear</div>
+    <div class="dt-step dt-4"><span>🔨</span>Prototipar</div>
+    <div class="dt-step dt-5"><span>✅</span>Testear</div>
+  </div>
+
+  <div style="margin-top:8px;margin-bottom:10px">
+    <div class="tech-row">
+      <span class="tech-tag" style="background:#1565C0">Empatizar</span>
+      <p>Entrevistas con operadores de mantenimiento de RISC Ingeniería S.A.S y análisis de casos de fallo en Boyacá. Identificación de la brecha de conocimiento como causa raíz.</p>
+    </div>
+    <div class="tech-row">
+      <span class="tech-tag" style="background:#6A1B9A">Definir</span>
+      <p><strong>"Las familias rurales necesitan diagnóstico técnico instantáneo sin depender de un ingeniero y sin conexión a internet."</strong> Punto de vista (HMW) como norte de diseño.</p>
+    </div>
+    <div class="tech-row">
+      <span class="tech-tag" style="background:#E65100">Idear</span>
+      <p>Generación de 12 conceptos. Selección de dos módulos complementarios: sistema de semáforo (diagnóstico) + compostaje guiado (eco-compost). Mapa de empatía y user journey documentado.</p>
+    </div>
+    <div class="tech-row">
+      <span class="tech-tag">Prototipar</span>
+      <p>Wireframes en papel → prototipo lo-fi → hi-fi en Figma con 18 pantallas. Implementación paralela como PWA .NET 8 con datos reales. <strong>Mobile-first 390×844 px.</strong></p>
+    </div>
+    <div class="tech-row">
+      <span class="tech-tag" style="background:#00695C">Testear</span>
+      <p>Validación interna con el equipo RISC y revisión técnica de la lógica de diagnóstico. Planificada prueba de usabilidad en campo (Boyacá, 2do semestre 2026) con 10 familias piloto.</p>
+    </div>
+  </div>
+
+  <!-- DECISIONES TÉCNICAS -->
+  <div class="sec-title">3. Decisiones Técnicas Clave</div>
+  <div class="two-col">
+    <div>
+      <div class="tech-row">
+        <span class="tech-tag">PWA</span>
+        <p><strong>Por qué no app nativa:</strong> No requiere Play Store. Instalable desde el navegador Chrome. <strong>Service Worker</strong> garantiza modo offline completo. Compatible con smartphones Android gama baja (&lt;$300.000 COP).</p>
+      </div>
+      <div class="tech-row">
+        <span class="tech-tag">.NET 8</span>
+        <p><strong>Backend existente:</strong> API REST Minimal API con SQLite. Soporte LTS hasta 2030. Arquitectura sin frameworks pesados — máxima compatibilidad con dispositivos básicos.</p>
+      </div>
+    </div>
+    <div>
+      <div class="tech-row">
+        <span class="tech-tag">Figma</span>
+        <p><strong>Prototipado hi-fi:</strong> Smart Animate para transiciones fluidas. Design System con tokens exportables (Tokens Studio). Permite presentación en vivo sin necesidad de compilar la app.</p>
+      </div>
+      <div class="tech-row">
+        <span class="tech-tag">UX</span>
+        <p><strong>Semáforo de riesgo:</strong> Algoritmo de scoring (score &lt;35%: verde, 35–65%: amarillo, &gt;65%: rojo) basado en Resolución 330/2017 y guías técnicas del MVCT para sistema on-site.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer pág 1 -->
+  <div class="doc-footer">
+    <span><strong>SaniSostenible 2.0</strong> · RISC Ingeniería S.A.S · Concurso I3M 2026-1</span>
+    <span>Página 1 de 2</span>
+    <span>Confidencial — Solo uso académico concurso</span>
+  </div>
+
+</div><!-- /page1 -->
+
+
+<!-- ══════════════════════════════════════════════════
+     PÁGINA 2
+══════════════════════════════════════════════════ -->
+<div class="a4-page" id="page2">
+
+  <!-- Header pág 2 -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>SaniSostenible 2.0 — Flujos, Modelo y Hoja de Ruta</h1>
+      <p>Concurso I3M 2026-1 · Universidad Santo Tomás Tunja</p>
+    </div>
+    <div class="doc-header-right">
+      <div class="logo-box">RISC<br>INGENIERÍA</div>
+      <small>21 de Abril, 2026</small>
+    </div>
+  </div>
+
+  <!-- FLUJOS DE LOS 2 MÓDULOS -->
+  <div class="sec-title">4. Flujo de los 2 Módulos Principales</div>
+  <div class="two-col">
+
+    <!-- Módulo 1: Diagnóstico -->
+    <div class="flow-diagram">
+      <div class="flow-title">🔍 Módulo 1 — Diagnóstico Inteligente</div>
+      <div class="flow-nodes">
+        <div class="flow-node fn-start">Seleccionar componente</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-step">3 preguntas con ilustraciones</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-step">Algoritmo de scoring de riesgo</div>
+        <div class="flow-arrow">↓</div>
+        <div style="display:flex;gap:4px;width:100%">
+          <div class="flow-node fn-result-g" style="flex:1;font-size:7.5px">🟢 Óptimo<br><span style="font-weight:400">&lt;35% riesgo</span></div>
+          <div class="flow-node fn-result-y" style="flex:1;font-size:7.5px">🟡 Atención<br><span style="font-weight:400">35–65%</span></div>
+          <div class="flow-node fn-result-r" style="flex:1;font-size:7.5px">🔴 Urgente<br><span style="font-weight:400">&gt;65%</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-step">Recomendaciones + botón WhatsApp RISC</div>
+      </div>
+      <div style="font-size:8px;color:var(--gray-300);text-align:center;margin-top:6px">
+        Componentes: Tanque · Trampa · Campo Irrigación · Pozo
+      </div>
+    </div>
+
+    <!-- Módulo 2: Eco-Compost -->
+    <div class="flow-diagram">
+      <div class="flow-title">🌱 Módulo 2 — Eco-Compost (Economía Circular)</div>
+      <div class="flow-nodes">
+        <div class="flow-node fn-start" style="background:#0277BD">Diagnóstico de lodo</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-eco">Clasificación de biosólido (Res. 1287/2014)</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-eco">Protocolo personalizado de tratamiento</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-eco">Guía de compostera artesanal</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-step">Calendario interactivo 12 semanas</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node fn-result-g">🏆 HumusSéptico® listo para uso</div>
+      </div>
+      <div style="font-size:8px;color:var(--gray-300);text-align:center;margin-top:6px">
+        Subproductos: HumusSéptico® · BiofertilGrasa®
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODELO DE VALOR -->
+  <div class="sec-title">5. Modelo de Valor — Doble Pilar</div>
+  <div class="two-col" style="margin-top:6px;margin-bottom:12px">
+    <div class="value-col free">
+      <span class="value-pill">PILAR SOCIAL · GRATUITO</span>
+      <h3>🌿 Módulo Libre</h3>
+      <ul>
+        <li>Manual interactivo paso a paso</li>
+        <li>Diagnóstico semáforo (4 componentes)</li>
+        <li>Módulo Eco-Compost completo</li>
+        <li>Calculadora de frecuencias</li>
+        <li>Funciona 100% offline (PWA)</li>
+        <li>Sin registro de usuario</li>
+      </ul>
+      <div style="font-size:7.5px;color:var(--green-700);margin-top:6px;font-weight:600">
+        → Genera adopción masiva y confianza en comunidades rurales
+      </div>
+    </div>
+    <div class="value-col pro">
+      <span class="value-pill">PILAR EMPRESARIAL · PRO</span>
+      <h3>🏢 Módulo Pro — RISC &amp; Operadores</h3>
+      <ul>
+        <li>Dashboard multi-cliente con alertas</li>
+        <li>Historial técnico por instalación</li>
+        <li>Generación de reportes PDF</li>
+        <li>Trazabilidad de mantenimientos</li>
+        <li>Facturación y agenda integrada</li>
+        <li>API para operadores municipales</li>
+      </ul>
+      <div style="font-size:7.5px;color:#7B1FA2;margin-top:6px;font-weight:600">
+        → Financia el pilar social y escala el modelo a nivel nacional
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACTO ESPERADO -->
+  <div class="sec-title">6. Impacto Esperado — Año 1 (2026–2027)</div>
+  <div class="three-col" style="margin-top:8px;margin-bottom:12px">
+    <div class="impact-card">
+      <div class="num">200<span class="unit">familias beneficiadas</span></div>
+      <div class="desc">Comunidades rurales de Boyacá en fase piloto. Meta escalada a 2.000 en 2028.</div>
+    </div>
+    <div class="impact-card">
+      <div class="num">500<span class="unit">kg de compost generados</span></div>
+      <div class="desc">HumusSéptico® producido por las familias piloto. Valor equivalente: ~$600.000 COP en abono.</div>
+    </div>
+    <div class="impact-card">
+      <div class="num">15<span class="unit">% reducción ETAs</span></div>
+      <div class="desc">Reducción esperada de enfermedades de transmisión hídrica en comunidades beneficiadas.</div>
+    </div>
+  </div>
+
+  <!-- PRÓXIMOS PASOS -->
+  <div class="sec-title">7. Hoja de Ruta — Próximos Pasos</div>
+  <div class="roadmap" style="margin-top:10px;margin-bottom:14px">
+    <div class="rm-step">
+      <div class="rm-dot done">✓</div>
+      <strong>Fase 0</strong>
+      <p>PWA base<br>funcional<br>(actual)</p>
+    </div>
+    <div class="rm-step">
+      <div class="rm-dot active">1</div>
+      <strong>Fase 1</strong>
+      <p>Prototipo hi-fi<br>Validación<br>interna</p>
+    </div>
+    <div class="rm-step">
+      <div class="rm-dot future">2</div>
+      <strong>Fase 2</strong>
+      <p>200 familias<br>piloto<br>Boyacá</p>
+    </div>
+    <div class="rm-step">
+      <div class="rm-dot future">3</div>
+      <strong>Fase 3</strong>
+      <p>Integración<br>operadores<br>municipales</p>
+    </div>
+    <div class="rm-step">
+      <div class="rm-dot future">4</div>
+      <strong>Fase 4</strong>
+      <p>Escalamiento<br>nacional<br>ODS 6 ✓</p>
+    </div>
+  </div>
+
+  <!-- Criterios de evaluación -->
+  <div class="sec-title">8. Alineación con Criterios del Concurso I3M</div>
+  <div class="two-col" style="margin-top:6px">
+    <div>
+      <div class="tech-row">
+        <span class="tech-tag" style="background:#C62828">25%</span>
+        <p><strong>Innovación:</strong> Eco-Compost único en el sector + diagnóstico visual gamificado + modelo doble pilar sin precedentes en saneamiento rural Colombia.</p>
+      </div>
+      <div class="tech-row">
+        <span class="tech-tag" style="background:#0277BD">25%</span>
+        <p><strong>Impacto Social/Ambiental:</strong> ODS 6, economía circular, comunidades rurales específicas de Boyacá, Resolución 330/2017 cumplida.</p>
+      </div>
+    </div>
+    <div>
+      <div class="tech-row">
+        <span class="tech-tag">20%</span>
+        <p><strong>Factibilidad Técnica:</strong> PWA .NET 8 ya funcional en producción. No es un mockup —es una extensión de infraestructura existente.</p>
+      </div>
+      <div class="tech-row">
+        <span class="tech-tag" style="background:#6A1B9A">15%</span>
+        <p><strong>Usabilidad:</strong> 18 pantallas hi-fi, Design Thinking documentado, mobile-first para dispositivos básicos rurales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer pág 2 -->
+  <div class="doc-footer">
+    <span><strong>SaniSostenible 2.0</strong> · RISC Ingeniería S.A.S · Concurso I3M 2026-1</span>
+    <span>Página 2 de 2</span>
+    <span>© 2026 RISC Ingeniería S.A.S — Todos los derechos reservados</span>
+  </div>
+
+</div><!-- /page2 -->
+
+</body>
+</html>

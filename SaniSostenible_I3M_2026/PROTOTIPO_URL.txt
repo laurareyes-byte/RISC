@@ -1,0 +1,19 @@
+Prototipo Interactivo SaniSostenible 2.0 — Concurso I3M 2026-1
+================================================================
+
+URL LOCAL (servidor en ejecución):
+http://localhost:5000/prototipo
+
+URL PÚBLICA (Figma — ejecutar plugin figma/figma-plugin.js para generar):
+[Pendiente publicar en Figma Cloud después de ejecutar el plugin]
+
+INSTRUCCIONES FIGMA:
+1. Abrir Figma Desktop
+2. Plugins → Development → New Plugin → Run once
+3. Pegar contenido de figma/figma-plugin.js → Run
+4. Compartir enlace del archivo generado (Share → Anyone with link → can view)
+5. Activar modo Prototype en Figma y copiar link de presentación
+
+ALTERNATIVA OFFLINE:
+Abrir http://localhost:5000/prototipo en Chrome
+(requiere dotnet run desde C:\RISC)

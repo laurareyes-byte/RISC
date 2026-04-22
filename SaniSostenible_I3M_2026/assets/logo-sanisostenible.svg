@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="195" fill="#1B5E20"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#4CAF50" stroke-width="2" opacity="0.4"/>
+
+  <!-- Water drop body -->
+  <path d="M200 80 C200 80 130 160 130 230 C130 275 161 310 200 310 C239 310 270 275 270 230 C270 160 200 80 200 80 Z"
+        fill="#E8F5E9" opacity="0.95"/>
+
+  <!-- Water drop inner gradient fill -->
+  <path d="M200 120 C200 120 155 185 155 235 C155 263 175 285 200 285 C225 285 245 263 245 235 C245 185 200 120 200 120 Z"
+        fill="#C8E6C9"/>
+
+  <!-- Leaf / plant sprout emerging from top -->
+  <path d="M200 95 C200 95 210 75 230 70 C250 65 260 80 245 100 C235 115 210 110 200 95 Z"
+        fill="#4CAF50"/>
+  <path d="M200 95 C200 95 190 75 170 70 C150 65 140 80 155 100 C165 115 190 110 200 95 Z"
+        fill="#66BB6A"/>
+
+  <!-- Stem -->
+  <line x1="200" y1="95" x2="200" y2="130" stroke="#2E7D32" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Recycling arrows (circular economy) inside drop -->
+  <g transform="translate(200,220)" opacity="0.85">
+    <!-- Arrow 1 (top-left arc) -->
+    <path d="M-28,-18 A34,34 0 0,1 28,-18"
+          fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="28,-18 20,-30 36,-26" fill="#2E7D32"/>
+    <!-- Arrow 2 (bottom arc) -->
+    <path d="M28,-18 A34,34 0 0,1 0,32"
+          fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="0,32 10,20 -4,20" fill="#2E7D32"/>
+    <!-- Arrow 3 (left-return arc) -->
+    <path d="M0,32 A34,34 0 0,1 -28,-18"
+          fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="-28,-18 -18,-6 -34,-10" fill="#2E7D32"/>
+  </g>
+
+  <!-- Text: SaniSostenible -->
+  <text x="200" y="348" font-family="'Poppins','Arial',sans-serif"
+        font-size="28" font-weight="800" fill="#FFFFFF"
+        text-anchor="middle" letter-spacing="1">SaniSostenible</text>
+
+  <!-- Text: 2.0 accent -->
+  <text x="200" y="374" font-family="'Poppins','Arial',sans-serif"
+        font-size="16" font-weight="600" fill="#81C784"
+        text-anchor="middle" letter-spacing="4">2 . 0</text>
+
+  <!-- ODS 6 small badge -->
+  <rect x="156" y="382" width="88" height="14" rx="7" fill="#0277BD" opacity="0.85"/>
+  <text x="200" y="393" font-family="'Poppins','Arial',sans-serif"
+        font-size="9" font-weight="700" fill="#FFFFFF"
+        text-anchor="middle" letter-spacing="2">ODS 6 · RISC</text>
+</svg>

@@ -1,0 +1,487 @@
+{
+  "name": "SaniSostenible 2.0 — Prototipo I3M 2026-1",
+  "description": "Archivo de estructura de frames para importar en Figma via plugin. Compatible con plugins: Figma Tokens Studio, Figma Variables, y API REST de Figma.",
+  "version": "1.0.0",
+  "author": "RISC Ingeniería S.A.S",
+  "metadata": {
+    "contest": "Concurso I3M 2026-1",
+    "university": "Universidad Santo Tomás Tunja",
+    "department": "DMBB — Diseño y Mecatrónica",
+    "date": "2026-04-21",
+    "frameWidth": 390,
+    "frameHeight": 844,
+    "device": "iPhone 14 Pro",
+    "prototypeUrl": "/prototipo",
+    "startingFrame": "splash"
+  },
+  "pages": [
+    {
+      "id": "page-cover",
+      "name": "📋 Cover",
+      "frames": [
+        {
+          "id": "cover-main",
+          "name": "SaniSostenible 2.0 — Cover",
+          "width": 800,
+          "height": 600,
+          "background": "#1B5E20",
+          "elements": [
+            { "type": "text", "content": "SaniSostenible 2.0", "style": "h1", "color": "#FFFFFF", "x": 60, "y": 120 },
+            { "type": "text", "content": "Transformando el Saneamiento Campestre", "style": "h2", "color": "rgba(255,255,255,0.85)", "x": 60, "y": 175 },
+            { "type": "text", "content": "RISC Ingeniería S.A.S · Concurso I3M 2026-1", "style": "body", "color": "rgba(255,255,255,0.65)", "x": 60, "y": 215 },
+            { "type": "divider", "color": "rgba(255,255,255,0.2)", "x": 60, "y": 250, "width": 680, "height": 1 },
+            { "type": "text", "content": "Universidad Santo Tomás · Tunja · DMBB", "style": "caption", "color": "rgba(255,255,255,0.5)", "x": 60, "y": 270 },
+            { "type": "badge", "content": "🏆 I3M 2026-1", "background": "rgba(255,255,255,0.15)", "color": "#FFFFFF", "x": 560, "y": 120 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-design-system",
+      "name": "🎨 Design System",
+      "frames": [
+        {
+          "id": "ds-colors",
+          "name": "01 · Colores",
+          "width": 800,
+          "height": 600,
+          "background": "#FAFAFA",
+          "colorSwatches": [
+            { "name": "Primary/900", "value": "#1B5E20", "usage": "Hero, Splash, headers" },
+            { "name": "Primary/700", "value": "#2E7D32", "usage": "Botones principales, activos" },
+            { "name": "Primary/500", "value": "#4CAF50", "usage": "Progress bars, accents" },
+            { "name": "Primary/100", "value": "#C8E6C9", "usage": "Bordes suaves, step dots done" },
+            { "name": "Primary/50",  "value": "#E8F5E9", "usage": "Backgrounds cards, hover" },
+            { "name": "Status/Warning",      "value": "#F9A825", "usage": "Estado ATENCIÓN" },
+            { "name": "Status/Warning-Light","value": "#FFF8E1", "usage": "Fondo ATENCIÓN" },
+            { "name": "Status/Error",        "value": "#C62828", "usage": "Estado URGENTE" },
+            { "name": "Status/Error-Light",  "value": "#FFEBEE", "usage": "Fondo URGENTE" },
+            { "name": "Water/Blue",          "value": "#0277BD", "usage": "ODS banner, agua" },
+            { "name": "Water/Blue-Light",    "value": "#E1F5FE", "usage": "Fondos módulo agua" },
+            { "name": "Neutral/Black",  "value": "#212121", "usage": "Títulos" },
+            { "name": "Neutral/Gray700","value": "#616161", "usage": "Subtítulos, body text" },
+            { "name": "Neutral/Gray400","value": "#9E9E9E", "usage": "Placeholders, disabled" },
+            { "name": "Neutral/Gray100","value": "#F5F5F5", "usage": "Backgrounds, separadores" },
+            { "name": "WhatsApp",       "value": "#25D366", "usage": "Botón CTA WhatsApp" },
+            { "name": "App BG",         "value": "#F0F4F0", "usage": "Fondo global de la app" }
+          ]
+        },
+        {
+          "id": "ds-typography",
+          "name": "02 · Tipografía",
+          "width": 800,
+          "height": 600,
+          "background": "#FAFAFA",
+          "textStyles": [
+            { "name": "H1/Bold-24",     "font": "Poppins", "weight": "800", "size": 24, "lineHeight": 32, "usage": "Splash title, pantallas hero" },
+            { "name": "H2/Bold-20",     "font": "Poppins", "weight": "700", "size": 20, "lineHeight": 28, "usage": "Onboarding, result titles" },
+            { "name": "H3/SemiBold-16", "font": "Poppins", "weight": "600", "size": 16, "lineHeight": 24, "usage": "Inner headers, card titles" },
+            { "name": "Body/Regular-14","font": "Poppins", "weight": "400", "size": 14, "lineHeight": 20, "usage": "Cuerpo de texto principal" },
+            { "name": "Body/Medium-14", "font": "Poppins", "weight": "500", "size": 14, "lineHeight": 20, "usage": "Cuerpo con énfasis" },
+            { "name": "Button/SemiBold-14","font": "Poppins", "weight": "600", "size": 14, "lineHeight": 20, "usage": "Labels de botones" },
+            { "name": "Caption/Light-12","font": "Poppins", "weight": "300", "size": 12, "lineHeight": 16, "usage": "Hints, nav labels, badges" },
+            { "name": "Label/SemiBold-11","font": "Poppins", "weight": "600", "size": 11, "lineHeight": 14, "usage": "Tags pequeños, nav labels" }
+          ]
+        },
+        {
+          "id": "ds-components",
+          "name": "03 · Componentes",
+          "width": 800,
+          "height": 1200,
+          "background": "#F0F4F0",
+          "components": [
+            {
+              "name": "Button/Primary",
+              "variants": ["Default", "Hover", "Pressed", "Loading", "Disabled"],
+              "width": "full-width",
+              "height": 52,
+              "radius": 10,
+              "background": "#2E7D32",
+              "textColor": "#FFFFFF",
+              "shadow": "0 4px 14px rgba(46,125,50,0.30)"
+            },
+            {
+              "name": "Button/WhatsApp",
+              "width": "full-width",
+              "height": 52,
+              "radius": 10,
+              "background": "#25D366",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "Button/Outline",
+              "width": "full-width",
+              "height": 52,
+              "radius": 10,
+              "background": "transparent",
+              "border": "#2E7D32",
+              "borderWidth": 2,
+              "textColor": "#2E7D32"
+            },
+            {
+              "name": "Card/Default",
+              "width": "calc(100% - 32px)",
+              "radius": 16,
+              "padding": 16,
+              "background": "#FFFFFF",
+              "shadow": "0 2px 12px rgba(0,0,0,0.08)",
+              "border": "#F5F5F5",
+              "borderWidth": 1
+            },
+            {
+              "name": "Card/Result",
+              "variants": ["Green (Óptimo)", "Yellow (Atención)", "Red (Urgente)"],
+              "width": "calc(100% - 32px)",
+              "radius": 24,
+              "padding": 28,
+              "backgrounds": ["#E8F5E9", "#FFF8E1", "#FFEBEE"],
+              "textAlign": "center"
+            },
+            {
+              "name": "BottomNavBar",
+              "width": 390,
+              "height": 64,
+              "background": "#FFFFFF",
+              "borderTop": "#C8E6C9",
+              "items": 5,
+              "activeColor": "#2E7D32",
+              "inactiveColor": "#9E9E9E",
+              "centerItemBackground": "#2E7D32",
+              "centerItemRadius": 16
+            },
+            {
+              "name": "Badge/Free",
+              "background": "#E8F5E9",
+              "textColor": "#2E7D32",
+              "radius": 9999,
+              "paddingV": 3,
+              "paddingH": 10,
+              "fontSize": 11
+            },
+            {
+              "name": "Badge/NEW",
+              "background": "#F9A825",
+              "textColor": "#212121",
+              "radius": 6,
+              "fontSize": 8,
+              "position": "absolute top-right"
+            },
+            {
+              "name": "StatusBadge",
+              "variants": [
+                { "label": "OK",        "bg": "#E8F5E9", "text": "#2E7D32", "border": "#2E7D32" },
+                { "label": "ATENCIÓN",  "bg": "#FFF8E1", "text": "#E65100", "border": "#F9A825" },
+                { "label": "URGENTE",   "bg": "#FFEBEE", "text": "#C62828", "border": "#C62828" }
+              ],
+              "radius": 9999,
+              "paddingV": 6,
+              "paddingH": 16,
+              "fontSize": 12,
+              "fontWeight": 700
+            },
+            {
+              "name": "ProgressBar",
+              "height": 4,
+              "radius": 2,
+              "trackColor": "#F5F5F5",
+              "fillColor": "#4CAF50"
+            },
+            {
+              "name": "StepDot",
+              "size": 28,
+              "states": {
+                "active":  { "bg": "#2E7D32", "text": "#FFFFFF" },
+                "done":    { "bg": "#C8E6C9", "text": "#2E7D32" },
+                "pending": { "bg": "#F5F5F5", "text": "#9E9E9E" }
+              }
+            },
+            {
+              "name": "InnerHeader",
+              "width": 390,
+              "height": 56,
+              "background": "#FFFFFF",
+              "borderBottom": "#F5F5F5",
+              "sticky": true,
+              "elements": ["BackButton (36x36px, radius 10)", "Title (H3)", "RightSlot (pill/label)"]
+            },
+            {
+              "name": "IconWrap",
+              "size": 44,
+              "radius": 14,
+              "backgroundVariants": {
+                "diag":  "#E8F5E9",
+                "eco":   "#E0F2F1",
+                "guide": "#E1F5FE",
+                "calc":  "#FFF8E1",
+                "serv":  "#EDE7F6",
+                "wa":    "#E8F5E9"
+              }
+            },
+            {
+              "name": "CalendarWeekCell",
+              "width": "calc(25% - 8px)",
+              "radius": 12,
+              "states": {
+                "done":    { "bg": "#E8F5E9", "border": "#C8E6C9" },
+                "active":  { "bg": "#FFFFFF", "border": "#4CAF50", "shadow": "0 0 0 3px rgba(76,175,80,0.15)" },
+                "pending": { "bg": "#FFFFFF", "opacity": 0.6 }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-wireframes",
+      "name": "📐 Wireframes Lo-Fi",
+      "frames": [
+        { "id": "wf-splash",       "name": "WF-01 Splash",              "screen": "splash",            "connections": ["wf-onboarding-1"] },
+        { "id": "wf-onboarding-1", "name": "WF-02 Onboarding 1/3",      "screen": "onboarding-1",      "connections": ["wf-onboarding-2"] },
+        { "id": "wf-onboarding-2", "name": "WF-03 Onboarding 2/3",      "screen": "onboarding-2",      "connections": ["wf-onboarding-3"] },
+        { "id": "wf-onboarding-3", "name": "WF-04 Onboarding 3/3",      "screen": "onboarding-3",      "connections": ["wf-home"] },
+        { "id": "wf-home",         "name": "WF-05 Home / Dashboard",     "screen": "home",              "connections": ["wf-diagnostico", "wf-ecocompost", "wf-guias", "wf-calc", "wf-servicios"] },
+        { "id": "wf-diagnostico",  "name": "WF-06 Diagnóstico Selección","screen": "diagnostico",       "connections": ["wf-diag-preguntas"] },
+        { "id": "wf-diag-p1",      "name": "WF-07 Diag Pregunta 1/3",   "screen": "diag-preguntas",    "connections": ["wf-diag-p2"] },
+        { "id": "wf-diag-p2",      "name": "WF-08 Diag Pregunta 2/3",   "screen": "diag-preguntas",    "connections": ["wf-diag-p3"] },
+        { "id": "wf-diag-p3",      "name": "WF-09 Diag Pregunta 3/3",   "screen": "diag-preguntas",    "connections": ["wf-diag-resultado-verde", "wf-diag-resultado-amarillo", "wf-diag-resultado-rojo"] },
+        { "id": "wf-diag-resultado-verde",    "name": "WF-10a Resultado 🟢 Óptimo",   "screen": "diag-resultado", "connections": ["wf-ecocompost", "wf-diagnostico"] },
+        { "id": "wf-diag-resultado-amarillo", "name": "WF-10b Resultado 🟡 Atención", "screen": "diag-resultado", "connections": ["wf-ecocompost", "wf-diagnostico"] },
+        { "id": "wf-diag-resultado-rojo",     "name": "WF-10c Resultado 🔴 Urgente",  "screen": "diag-resultado", "connections": ["wf-ecocompost", "wf-diagnostico"] },
+        { "id": "wf-ecocompost",     "name": "WF-11 Eco-Compost Entrada",   "screen": "ecocompost",       "connections": ["wf-eco-diagnostico", "wf-eco-protocolo", "wf-eco-compostera", "wf-eco-calendario"] },
+        { "id": "wf-eco-diagnostico","name": "WF-12 Eco Diagnóstico Lodo",  "screen": "eco-diagnostico",  "connections": ["wf-eco-resultado"] },
+        { "id": "wf-eco-resultado",  "name": "WF-13 Eco Resultado",          "screen": "eco-resultado",    "connections": ["wf-eco-protocolo", "wf-eco-calendario"] },
+        { "id": "wf-eco-protocolo",  "name": "WF-14 Eco Protocolo",          "screen": "eco-protocolo",    "connections": ["wf-eco-compostera"] },
+        { "id": "wf-eco-compostera", "name": "WF-15 Eco Compostera",         "screen": "eco-compostera",   "connections": ["wf-eco-calendario"] },
+        { "id": "wf-eco-calendario", "name": "WF-16 Eco Calendario 12 sem",  "screen": "eco-calendario",   "connections": ["wf-ecocompost"] }
+      ]
+    },
+    {
+      "id": "page-hifi",
+      "name": "📱 Prototipo Hi-Fi",
+      "description": "Frames de alta fidelidad — conectados en modo Prototipo de Figma",
+      "prototypeConnections": [
+        { "from": "splash",             "to": "onboarding-1",           "trigger": "after-delay", "delay": 2800, "animation": "smart-animate", "duration": 300 },
+        { "from": "onboarding-1",       "to": "onboarding-2",           "trigger": "on-click",    "element": "btn-siguiente",   "animation": "smart-animate", "duration": 300 },
+        { "from": "onboarding-2",       "to": "onboarding-3",           "trigger": "on-click",    "element": "btn-siguiente",   "animation": "smart-animate", "duration": 300 },
+        { "from": "onboarding-3",       "to": "home",                   "trigger": "on-click",    "element": "btn-comenzar",    "animation": "smart-animate", "duration": 350 },
+        { "from": "home",               "to": "diagnostico",            "trigger": "on-click",    "element": "btn-diagnostico", "animation": "push-left", "duration": 300 },
+        { "from": "home",               "to": "ecocompost",             "trigger": "on-click",    "element": "btn-ecocompost",  "animation": "push-left", "duration": 300 },
+        { "from": "diagnostico",        "to": "diag-preguntas",         "trigger": "on-click",    "element": "comp-card",       "animation": "push-left", "duration": 300 },
+        { "from": "diag-preguntas",     "to": "diag-resultado-verde",   "trigger": "on-click",    "element": "btn-next-green",  "animation": "smart-animate", "duration": 400 },
+        { "from": "diag-preguntas",     "to": "diag-resultado-yellow",  "trigger": "on-click",    "element": "btn-next-yellow", "animation": "smart-animate", "duration": 400 },
+        { "from": "diag-preguntas",     "to": "diag-resultado-red",     "trigger": "on-click",    "element": "btn-next-red",    "animation": "smart-animate", "duration": 400 },
+        { "from": "diag-resultado",     "to": "ecocompost",             "trigger": "on-click",    "element": "btn-eco",         "animation": "push-left", "duration": 300 },
+        { "from": "diag-resultado",     "to": "diagnostico",            "trigger": "on-click",    "element": "btn-retry",       "animation": "push-right", "duration": 280 },
+        { "from": "ecocompost",         "to": "eco-diagnostico",        "trigger": "on-click",    "element": "stage-01",        "animation": "push-left", "duration": 300 },
+        { "from": "ecocompost",         "to": "eco-protocolo",          "trigger": "on-click",    "element": "stage-02",        "animation": "push-left", "duration": 300 },
+        { "from": "ecocompost",         "to": "eco-compostera",         "trigger": "on-click",    "element": "stage-03",        "animation": "push-left", "duration": 300 },
+        { "from": "ecocompost",         "to": "eco-calendario",         "trigger": "on-click",    "element": "stage-04",        "animation": "push-left", "duration": 300 },
+        { "from": "eco-diagnostico",    "to": "eco-resultado",          "trigger": "on-click",    "element": "btn-evaluar",     "animation": "smart-animate", "duration": 400 },
+        { "from": "eco-resultado",      "to": "eco-protocolo",          "trigger": "on-click",    "element": "btn-protocolo",   "animation": "push-left", "duration": 300 },
+        { "from": "eco-protocolo",      "to": "eco-compostera",         "trigger": "on-click",    "element": "btn-compostera",  "animation": "push-left", "duration": 300 },
+        { "from": "eco-compostera",     "to": "eco-calendario",         "trigger": "on-click",    "element": "btn-calendario",  "animation": "push-left", "duration": 300 },
+        {
+          "note": "BACK BUTTONS — Todos los botones ← usan animation: push-right, duration: 280ms",
+          "backConnections": [
+            { "from": "diagnostico",    "back-to": "home" },
+            { "from": "diag-preguntas", "back-to": "diagnostico" },
+            { "from": "diag-resultado", "back-to": "diagnostico" },
+            { "from": "ecocompost",     "back-to": "home" },
+            { "from": "eco-diagnostico","back-to": "ecocompost" },
+            { "from": "eco-resultado",  "back-to": "eco-diagnostico" },
+            { "from": "eco-protocolo",  "back-to": "ecocompost" },
+            { "from": "eco-compostera", "back-to": "ecocompost" },
+            { "from": "eco-calendario", "back-to": "ecocompost" }
+          ]
+        }
+      ],
+      "frames": [
+        {
+          "id": "splash",
+          "name": "01 · Splash",
+          "width": 390, "height": 844,
+          "background": "linear-gradient(155deg, #1B5E20 0%, #2E7D32 40%, #00695C 100%)",
+          "elements": [
+            { "type": "rectangle", "name": "particle-1", "x": -20,  "y": 84,  "width": 120, "height": 120, "radius": 60, "fill": "rgba(255,255,255,0.08)" },
+            { "type": "rectangle", "name": "particle-2", "x": 340,  "y": 506, "width": 80,  "height": 80,  "radius": 40, "fill": "rgba(255,255,255,0.08)" },
+            { "type": "rectangle", "name": "particle-3", "x": 195,  "y": 253, "width": 60,  "height": 60,  "radius": 30, "fill": "rgba(255,255,255,0.08)" },
+            { "type": "image",     "name": "logo", "x": 145, "y": 248, "width": 100, "height": 100, "src": "/img/logoempresa.png", "note": "Envolver en círculo 100px radius:50 bg:rgba(255,255,255,0.15) border:rgba(255,255,255,0.3)" },
+            { "type": "text",  "name": "title",   "content": "SaniSostenible", "x": 0,  "y": 380, "width": 390, "align": "center", "style": "H1/Bold-24", "color": "#FFFFFF", "fontSize": 28 },
+            { "type": "badge", "name": "version", "content": "2.0",            "x": 170, "y": 415, "background": "rgba(255,255,255,0.2)", "color": "#FFFFFF", "radius": 12, "paddingH": 10, "paddingV": 2 },
+            { "type": "text",  "name": "subtitle","content": "por RISC Ingeniería S.A.S", "x": 0, "y": 440, "width": 390, "align": "center", "style": "Caption", "color": "rgba(255,255,255,0.8)" },
+            { "type": "dots",  "name": "loading-dots", "x": 173, "y": 490, "count": 3, "size": 8, "gap": 8, "activeColor": "#FFFFFF", "inactiveColor": "rgba(255,255,255,0.4)" },
+            { "type": "text",  "name": "badge-contest", "content": "🏆 Concurso I3M 2026-1", "x": 0, "y": 770, "width": 390, "align": "center", "color": "rgba(255,255,255,0.7)", "fontSize": 11 },
+            { "type": "text",  "name": "badge-uni",     "content": "Universidad Santo Tomás · Tunja", "x": 0, "y": 786, "width": 390, "align": "center", "color": "rgba(255,255,255,0.5)", "fontSize": 10 }
+          ]
+        },
+        {
+          "id": "home",
+          "name": "05 · Home",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "sections": [
+            {
+              "name": "hero",
+              "y": 0, "height": 180,
+              "background": "linear-gradient(155deg, #1B5E20, #2E7D32)",
+              "elements": [
+                { "type": "image", "name": "logo-sm",    "x": 16, "y": 54, "width": 44, "height": 44, "radius": 12 },
+                { "type": "text",  "name": "app-title",  "content": "SaniSostenible 2.0", "x": 70, "y": 58, "color": "#FFFFFF", "style": "H3/SemiBold-16" },
+                { "type": "text",  "name": "app-sub",    "content": "RISC Ingeniería S.A.S · Acceso Libre", "x": 70, "y": 80, "color": "rgba(255,255,255,0.7)", "style": "Caption" },
+                { "type": "badge", "name": "badge-new",  "content": "NUEVO", "x": 330, "y": 60, "background": "#F9A825", "color": "#212121", "radius": 8, "fontSize": 10 },
+                { "type": "wave",  "name": "hero-wave",  "y": 148, "fill": "#F0F4F0", "note": "SVG wave path — ver proto.css .hero-wave" }
+              ]
+            },
+            {
+              "name": "stats-bar",
+              "y": 180, "height": 52,
+              "background": "#FFFFFF",
+              "elements": [
+                { "type": "stat", "label": "Clientes",     "value": "100+", "x": 0,   "width": 130 },
+                { "type": "stat", "label": "Años",         "value": "10+",  "x": 130, "width": 130 },
+                { "type": "stat", "label": "Satisfacción", "value": "98%",  "x": 260, "width": 130 }
+              ]
+            },
+            {
+              "name": "quick-grid",
+              "y": 262,
+              "layout": "grid-3-columns",
+              "gap": 10,
+              "paddingH": 16,
+              "cells": [
+                { "icon": "🔍", "label": "Diagnóstico",  "desc": "Detecta problemas",  "iconBg": "#E8F5E9", "badge": "NUEVO", "action": "goTo-diagnostico" },
+                { "icon": "🌱", "label": "Eco-Compost",  "desc": "Transforma residuos","iconBg": "#E0F2F1", "badge": "NUEVO", "action": "goTo-ecocompost" },
+                { "icon": "📚", "label": "Guías",        "desc": "Paso a paso",         "iconBg": "#E1F5FE", "action": "navTo-guides" },
+                { "icon": "🧮", "label": "Calculadora",  "desc": "Calcula tu tanque",   "iconBg": "#FFF8E1", "action": "navTo-calculator" },
+                { "icon": "🛠️", "label": "Servicios",   "desc": "Mantenimiento",        "iconBg": "#EDE7F6", "action": "navTo-services" },
+                { "icon": "💬", "label": "WhatsApp",     "desc": "Contacto directo",    "iconBg": "#E8F5E9", "action": "wa-link" }
+              ]
+            },
+            {
+              "name": "ods-banner",
+              "y": 548, "height": 68,
+              "background": "linear-gradient(135deg, #0277BD, #0288D1)",
+              "radius": 10,
+              "marginH": 16,
+              "elements": [
+                { "type": "text", "content": "🌊",                              "fontSize": 28, "x": 16 },
+                { "type": "text", "content": "Alineado con ODS 6",              "color": "#FFFFFF", "fontWeight": 700, "fontSize": 13, "x": 60 },
+                { "type": "text", "content": "Agua limpia y saneamiento",        "color": "rgba(255,255,255,0.85)", "fontSize": 11, "x": 60 },
+                { "type": "text", "content": "6",                               "color": "rgba(255,255,255,0.3)", "fontSize": 36, "fontWeight": 900, "x": 340 }
+              ]
+            },
+            {
+              "name": "alert-card",
+              "y": 630, "height": 68,
+              "background": "#FFF8E1",
+              "border": "#FFD54F",
+              "radius": 10,
+              "marginH": 16,
+              "action": "goTo-diagnostico",
+              "elements": [
+                { "type": "text", "content": "⚠️", "fontSize": 22, "x": 14 },
+                { "type": "text", "content": "¿Cuándo fue el último mantenimiento?", "fontWeight": 700, "fontSize": 13, "x": 50 },
+                { "type": "text", "content": "Haz un diagnóstico rápido gratuito →",  "color": "#616161", "fontSize": 12, "x": 50 },
+                { "type": "text", "content": "›", "fontSize": 22, "color": "#9E9E9E", "x": 355 }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "diagnostico",
+          "name": "06 · Diagnóstico",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "Inner header sticky + lista de 4 cards componente + info-note al final"
+        },
+        {
+          "id": "diag-preguntas",
+          "name": "07 · Diagnóstico Preguntas",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "variants": ["Tanque P1", "Tanque P2", "Tanque P3", "Trampa P1...", "Campo P1...", "Gases P1..."],
+          "note": "Header con progress bar 3 steps + question-card + options-list + btn-next"
+        },
+        {
+          "id": "diag-resultado-verde",
+          "name": "08a · Resultado 🟢 Óptimo",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "resultType": "green"
+        },
+        {
+          "id": "diag-resultado-amarillo",
+          "name": "08b · Resultado 🟡 Atención",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "resultType": "yellow"
+        },
+        {
+          "id": "diag-resultado-rojo",
+          "name": "08c · Resultado 🔴 Urgente",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "resultType": "red"
+        },
+        {
+          "id": "ecocompost",
+          "name": "09 · Eco-Compost",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "Hero card verde oscuro con ciclo de flechas + 4 stage cards + producto-card-mini"
+        },
+        {
+          "id": "eco-diagnostico",
+          "name": "10 · Eco Diagnóstico Lodo",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "3 eco-q-cards con opciones de radio + btn evaluar"
+        },
+        {
+          "id": "eco-resultado",
+          "name": "11 · Eco Resultado",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "variants": ["Apto (verde)", "Requiere tratamiento (amarillo)"]
+        },
+        {
+          "id": "eco-protocolo",
+          "name": "12 · Eco Protocolo",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "5 proto-steps con línea conectora + métricas cards (temp/humedad/C:N)"
+        },
+        {
+          "id": "eco-compostera",
+          "name": "13 · Eco Compostera",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "Ilustración compostera 3D CSS + 4 spec-rows"
+        },
+        {
+          "id": "eco-calendario",
+          "name": "14 · Eco Calendario 12 sem",
+          "width": 390, "height": 844,
+          "background": "#F0F4F0",
+          "note": "Progress summary + grid 4-col de semanas (8 activas + 4 maduración) + panel semanal expandible"
+        }
+      ]
+    },
+    {
+      "id": "page-handoff",
+      "name": "📤 Handoff Notes",
+      "notes": [
+        "Fuente: Poppins — importar desde Google Fonts en Figma antes de comenzar",
+        "Grid: 8pt grid system — todos los espaciados son múltiplos de 4 o 8px",
+        "Frame base: 390×844 (iPhone 14 Pro) — usar scale-down para presentación",
+        "Todos los íconos son emojis Unicode — no requieren assets adicionales",
+        "El logo /img/logoempresa.png debe estar en los assets del proyecto",
+        "Prototype start frame: '01 · Splash'",
+        "Animación por defecto: Smart Animate 300ms ease-in-out",
+        "Back buttons: push-right 280ms ease-out",
+        "Modales/panels: slide-from-bottom 350ms spring",
+        "Semáforo de resultado: depende de suma de riesgos (0-35%: verde, 35-65%: amarillo, >65%: rojo)"
+      ]
+    }
+  ]
+}

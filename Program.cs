@@ -77,6 +77,38 @@ app.MapPost("/api/calculator", (CalculatorInput input) =>
     });
 });
 
+// Prototipo I3M — ruta explícita
+app.MapGet("/prototipo", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync(
+        Path.Combine(app.Environment.WebRootPath, "prototipo.html"));
+});
+
+// Entrenador de pitch — 7 ensayos
+app.MapGet("/pitch-trainer", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync(
+        Path.Combine(app.Environment.WebRootPath, "pitch-trainer.html"));
+});
+
+// Documentación complementaria (2 páginas, imprimible a PDF)
+app.MapGet("/doc-complementaria", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync(
+        Path.Combine(app.Environment.WebRootPath, "doc-complementaria.html"));
+});
+
+// Slides del pitch (5 slides A4 horizontal, modo presentación + imprimible)
+app.MapGet("/pitch-slides", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync(
+        Path.Combine(app.Environment.WebRootPath, "pitch-slides.html"));
+});
+
 // SPA fallback: sirve index.html para rutas no-API
 app.MapFallback(async context =>
 {

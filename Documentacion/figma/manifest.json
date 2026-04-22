@@ -1,0 +1,11 @@
+{
+  "name": "SaniSostenible 2.0 — I3M Importer",
+  "id": "sanisostenible-i3m-2026",
+  "api": "1.0.0",
+  "main": "figma-plugin.js",
+  "ui": null,
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "permissions": ["currentuser"],
+  "description": "Importa el design system y los frames base del prototipo SaniSostenible 2.0 para el Concurso I3M 2026-1 · RISC Ingeniería S.A.S"
+}
