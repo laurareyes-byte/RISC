@@ -1,7 +1,7 @@
 {
-  "name": "RISC Ingeniería",
-  "short_name": "RISC",
-  "description": "Soluciones ambientales para sistemas sépticos - RISC Ingeniería S.A.S",
+  "name": "SaniSostenible 2.0",
+  "short_name": "SaniSostenible",
+  "description": "Asistente técnico virtual para saneamiento rural — RISC Ingeniería S.A.S",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1B5E20",

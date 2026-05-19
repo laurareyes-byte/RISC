@@ -1,11 +1,11 @@
-const CACHE_NAME = 'risc-v3';
+const CACHE_NAME = 'risc-v4';
 const API_CACHE = 'risc-api-v1';
 
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/css/styles.css',
-  '/js/app.js',
+  '/css/proto.css',
+  '/js/proto.js',
   '/manifest.json',
   '/img/logoempresa.png',
   '/img/svc-tanque.svg',

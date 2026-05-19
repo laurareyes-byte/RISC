@@ -51,9 +51,17 @@ function navTo(from, page) {
   }
 }
 
-// ── SPLASH AUTO-ADVANCE ─────────────────────────────────────
+// Splash auto-advance (skip if already visited)
 window.addEventListener('load', () => {
-  setTimeout(() => goTo('screen-onboarding-1'), 2800);
+  const visited = sessionStorage.getItem('ss_visited');
+  if (visited) {
+    document.getElementById('screen-splash').classList.remove('active');
+    document.getElementById('screen-home').classList.add('active');
+    currentScreen = 'screen-home';
+  } else {
+    sessionStorage.setItem('ss_visited', '1');
+    setTimeout(() => goTo('screen-onboarding-1'), 2800);
+  }
 });
 
 // ── DIAGNÓSTICO ─────────────────────────────────────────────
@@ -518,12 +526,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     observer.observe(calScreen, { attributes: true, attributeFilter: ['class'] });
   }
-
-  // Hint auto-hide
-  setTimeout(() => {
-    const hint = document.getElementById('proto-hint');
-    if (hint) hint.style.display = 'none';
-  }, 8000);
 
   // Init guías
   renderGuiaList('');
